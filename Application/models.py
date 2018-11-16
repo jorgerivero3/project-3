@@ -1,6 +1,7 @@
 from Application import db, login_manager, application
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin
+import datetime
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -20,7 +21,7 @@ class Task(db.Model):
 	title = db.Column(db.String(20))
 	text = db.Column(db.String(100))
 	complete = db.Column(db.Boolean)
-	due = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+	due = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
 
 
 class User(db.Model, UserMixin):
