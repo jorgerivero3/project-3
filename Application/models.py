@@ -19,17 +19,16 @@ friends = db.Table('friends',
 class Task(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(20))
-	text = db.Column(db.String(100))
+	text = db.Column(db.String(200))
 	complete = db.Column(db.Boolean)
-	due = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+	due = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+	duration = b.Column(db.Integer, primary_key=True)
 
-
-class User(db.Model, UserMixin):
+class Event(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	username = db.Column(db.String(20), unique=True, nullable=False)
-	email = db.Column(db.String(120), unique=True, nullable=False)
-	password = db.Column(db.String(60), nullable=False)
-
+	title = db.Column(db.String(20))
+	text = db.Column(db.String(200))
+	time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
 	
