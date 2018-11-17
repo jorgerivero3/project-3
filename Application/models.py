@@ -22,7 +22,7 @@ class Task(db.Model):
 	text = db.Column(db.String(200))
 	complete = db.Column(db.Boolean)
 	due = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-	duration = b.Column(db.Integer, primary_key=True)
+	duration = db.Column(db.Integer, primary_key=True)
 
 class Event(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

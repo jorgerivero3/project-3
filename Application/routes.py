@@ -7,8 +7,14 @@ from flask_mail import Message
 import sys
 import random
 
+
+@application.route('/')
 def home():
-	return render_template('/home.html', title='ToDoList')
+	return render_template('/home.html', title='Calendar')
+
+@application.route('/todo_list')
+def ToDoList():
+	return render_template('/todo_list.html', title='ToDoList')
 
 @application.route('/register', methods=['GET', 'POST'])
 def register():
