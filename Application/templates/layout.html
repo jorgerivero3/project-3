@@ -13,7 +13,7 @@
     <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css') }}" type="text/css"/>
 </head>
 <body>
-	<div class="navBar">
+	<!---<div class="navBar">
 		<div align="left" style="position: relative; top: 10px;">
 			<a href="/">Calendar</a>
 			<a href="/todo_list">To Do List</a>
@@ -31,7 +31,23 @@
 			<a href="/register">Register</a>
 		</div>
 		{% endif %}
-		
+	</div>--->
+
+	<div class="dropdown">
+		<button class="dropbtn">
+			<div class="container" onclick="myFunction(this)">
+  				<div class="bar1"></div>
+  				<div class="bar2"></div>
+  				<div class="bar3"></div>
+			</div> 
+		</button>
+
+		<div class="dropdown-content">
+			<a href="/">Calendar</a>
+			<a href="/todo_list">To Do List</a>
+			<a href="/login">Login</a>
+			<a href="/register">Register</a>
+		</div>
 	</div>
 
 
@@ -46,6 +62,12 @@
 			{% endif %}
 		{% endwith %}
 	</div>
+
+	<script type="text/javascript">
+		function myFunction(x) {
+    		x.classList.toggle("change");
+		} 
+	</script>
 
    	{% block content %}{% endblock %}
 </body>
