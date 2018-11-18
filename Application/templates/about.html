@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!---calendar view--->
 <div align="center">
 	<h1>Welcome!</h1>
-	<p>Get ready to be organized!</p>
-	<p>Plan out your schedule with us</p>
-
+	<p style="padding: 0 50px ">
+		We provide an easy-to-use, linked calendar and to-do list for you to organize your chaotic life! The calendar will provide a comprehensive view of your tasks as well as your coming up meetings and events. The to-do list will show you your upcoming tasks, meetings, and events for the week.
+	</p>
+	<br><br><br>
 
 	{% if current_user.is_authenticated %}
 		<div>
@@ -19,6 +19,6 @@
 		<a href="/register" class="myButton">Need an account?</a>
 
 	{% endif%}
-	
+</div>
 
 {% endblock content %}

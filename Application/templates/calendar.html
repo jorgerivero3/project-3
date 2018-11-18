@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!---to do list--->
+<!---calendar view--->
 <div align="center">
 
-	<h1>To Do List</h1>
+	<h1>Calendar</h1>
 
 	{% if current_user.is_authenticated %}
 		<h1>To be released soon!</h1>
@@ -14,7 +14,8 @@
 		<a href="/register">Create an account</a>
 
 	{% endif%}
-
+	
 </div>
+
 
 {% endblock content %}

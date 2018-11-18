@@ -10,16 +10,24 @@ import random
 
 @application.route('/')
 def home():
-	return render_template('/home.html', title='Calendar')
+	return render_template('/home.html', title='Home')
+
+@application.route('/about')
+def about():
+	return render_template('/about.html', title='About')
 
 @application.route('/todo_list')
 def ToDoList():
 	return render_template('/todo_list.html', title='ToDoList')
 
+@application.route('/calendar')
+def calendar():
+	return render_template('/calendar.html', title='Calendar')
+
 @application.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
-		return redirect(url_for('game'))
+		return redirect(url_for('home'))
 	form = RegistrationForm()
 	if form.validate_on_submit():
 		hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -34,14 +42,14 @@ def register():
 @application.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:
-		return redirect(url_for('select'))
+		return redirect(url_for('home'))
 	form = LoginForm()
 	if form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
 		if user and bcrypt.check_password_hash(user.password, form.password.data):
 			login_user(user, remember=form.remember.data)
 			next_page = request.args.get('next')
-			return redirect(url_for('main'))
+			return redirect(url_for('home'))
 		else:
 			flash('Login unsuccessful. Email and/or password incorrect.')
 	return render_template('login.html', title='Login', form=form)

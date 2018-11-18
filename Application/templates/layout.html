@@ -43,10 +43,18 @@
 		</button>
 
 		<div class="dropdown-content">
-			<a href="/">Calendar</a>
+			<a href="/">Home</a>
+			<a href="/about">About</a>
+			<a href="/calendar">Calendar</a>
 			<a href="/todo_list">To Do List</a>
-			<a href="/login">Login</a>
-			<a href="/register">Register</a>
+
+			{% if current_user.is_authenticated %}
+				<a href="/account">Account</a>
+				<a href="/logout">Log Out</a>
+			{% else %}
+				<a href="/login">Login</a>
+				<a href="/register">Register</a>
+			{% endif %}
 		</div>
 	</div>
 

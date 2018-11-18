@@ -14,24 +14,12 @@ friends = db.Table('friends',
 	db.Column('friend_id', db.Integer, db.ForeignKey('user.id'))
 	)
 
-# Models 
 
-class Task(db.Model):
+class User(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
-	title = db.Column(db.String(20))
-	text = db.Column(db.String(200))
-	complete = db.Column(db.Boolean)
-	due = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-	duration = db.Column(db.Integer, primary_key=True)
-
-class Event(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	title = db.Column(db.String(20))
-	text = db.Column(db.String(200))
-	time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
-
-	
+	username = db.Column(db.String(20), unique=True, nullable=False)
+	email = db.Column(db.String(120), unique=True, nullable=False)
+	password = db.Column(db.String(60), nullable=False)
 
 	def get_reset_token(self, expires_sec=1800):
 		s = Serializer(application.config['SECRET_KEY'], expires_sec)
@@ -47,7 +35,20 @@ class Event(db.Model):
 		return User.query.get(user_id)
 
 	def __repr__(self):
-		return f"User('{self.username}'')"
+		return f"User('{self.username}')"
 
+# Models 
 
+class Task(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(20))
+	text = db.Column(db.String(200))
+	complete = db.Column(db.Boolean)
+	#due = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+	duration = db.Column(db.Integer, primary_key=True)
 
+class Event(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(20))
+	text = db.Column(db.String(200))
+	#time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
