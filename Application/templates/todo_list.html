@@ -5,36 +5,40 @@
 <div align="center">
 
 	<h1>To Do List</h1>
-	<a href="/task/new" class="myButton">+ New Item</a><br><br><br><br>
-	{% for task in tasks.items %}
-		{% if task.complete==true %}
-			<div class="task-block" style="text-decoration: line-through;">
-		{% else %}
-			<div class="task-block" style="text-decoration: none;">
-		{% endif %}
-		{{ task.title }}<br>
-		{% if task.due != None %}
-			{{ task.due }}<br>
-		{% else %}
-			No Due Date<br>
-		{% endif %}
-		<a href="/task/{{ task.id }}/complete">Complete?</a> 
-		<a href="/task/{{ task.id }}/delete">Delete?</a>
-	</div>
-		<br><br>
-	{% endfor %}
-	<p>Pages:
-		{% if page_num %}
-			{% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-				{% if tasks.page == page_num %}
-					<a href="{{ url_for('ToDoList', page=page_num) }}" style="font-weight: bold;">{{ page_num }}</a>
+	<form method='GET' action ='/task/new'><button href="/task/new" class="myButton">+ New Item</button></form><br><br><br><br>
+		<p>
+			{% for task in tasks.items %}
+				{% if task.complete==true %}
+					<div class="task-block" style="text-decoration: line-through;">
 				{% else %}
-					<a href="{{ url_for('ToDoList', page=page_num) }}">{{ page_num }}</a>
+					<div class="task-block" style="text-decoration: none;">
 				{% endif %}
+				{{ task.title }}<br>
+				{% if task.due != None %}
+					{{ task.due }}<br>
+				{% else %}
+					No Due Date<br>
+				{% endif %}
+				<a href="/task/{{ task.id }}/complete">Complete?</a> 
+				<a href="/task/{{ task.id }}/delete">Delete?</a>
+				<br><br>
 			{% endfor %}
-		{% else %}
-			<a href="{{ url_for('ToDoList', page=1) }}" style="font-weight: bold;">1</a>
-		{% endif %}
+		</p>
+	</form>
+
+	<p>
+		Pages:
+			{% if page_num %}
+				{% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+					{% if tasks.page == page_num %}
+						<a href="{{ url_for('ToDoList', page=page_num) }}" style="font-weight: bold;">{{ page_num }}</a>
+					{% else %}
+						<a href="{{ url_for('ToDoList', page=page_num) }}">{{ page_num }}</a>
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				<a href="{{ url_for('ToDoList', page=1) }}" style="font-weight: bold;">1</a>
+			{% endif %}
 	</p>
 
 </div>
