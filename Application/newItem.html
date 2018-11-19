@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="newListing">
+	<form method="POST" action="/task/new">
+		<h2>New Task</h2>
+		{{ form.hidden_tag() }}
+		Task Name<br>
+		{{ form.title }}
+		Brief description<br>
+		{{ form.description }}
+		Due Date (optional)<br>
+		{{ form.due }}
+		{{ form.submit(class="myButton") }}
+	</form>
+</div>
+
+{% endblock %}
