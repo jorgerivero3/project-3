@@ -144,3 +144,15 @@ def itemListing():
 	return render_template("newItem.html", title="New Item Listing", form=form, legend='New Listing')
 '''
 
+@application.route("/task/<int:task_id>/delete", methods=['GET'])
+@login_required
+def delete_task(task_id):
+	post = Task.query.get_or_404(task_id)
+	if post.author != current_user:
+		abort(403)
+	db.session.delete(post)
+	db.session.commit()
+	flash('Task Deleted', 'succss')
+	return redirect(url_for('ToDoList'))
+
+

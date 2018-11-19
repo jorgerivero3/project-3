@@ -10,10 +10,11 @@
 	<div class="task-block">
 		{{ task.title }}<br>
 		{% if task.due != None %}
-			{{ task.due }}
+			{{ task.due }}<br>
 		{% else %}
-			No Due Date
+			No Due Date<br>
 		{% endif %}
+		<a href="/task/{{ task.id }}/delete">Delete?</a>
 		<br><br>
 	{% endfor %}
 	<p>Pages:
