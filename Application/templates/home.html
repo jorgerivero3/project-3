@@ -5,18 +5,18 @@
 <div align="center">
 	<h1>Welcome!</h1>
 	<p>Get ready to be organized!</p>
-	<p>Plan out your schedule with us</p>
+	<p>Plan out your schedule with us</p><br>
 
 
 	{% if current_user.is_authenticated %}
 		<div>
-            <a href="/calendar" class="myButton">View Calendar</a><br><br>
+            <button href="/calendar" class="myButton">View Calendar</a><br><br>
             <a href="/todo_list" class="myButton">View To Do List</a><br><br>
             <a href="/account" class="myButton">View Account</a><br><br>
       	</div>
 	{% else %}
-		<a href="/login" class="myButton">Log in!</a><br><br>
-		<a href="/register" class="myButton">Need an account?</a>
+		<form method='GET' action ='/login'><button href="/login" class="myButton">LOGIN</button><br>
+		<form method='GET' action ='/register'><button href="/register" class="myButton">REGISTER</button></form>
 
 	{% endif%}
 	
