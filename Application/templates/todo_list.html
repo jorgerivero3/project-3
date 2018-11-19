@@ -7,14 +7,20 @@
 	<h1>To Do List</h1>
 	<a href="/task/new" class="myButton">+ New Item</a><br><br><br><br>
 	{% for task in tasks.items %}
-	<div class="task-block">
+		{% if task.complete==true %}
+			<div class="task-block" style="text-decoration: line-through;">
+		{% else %}
+			<div class="task-block" style="text-decoration: none;">
+		{% endif %}
 		{{ task.title }}<br>
 		{% if task.due != None %}
 			{{ task.due }}<br>
 		{% else %}
 			No Due Date<br>
 		{% endif %}
+		<a href="/task/{{ task.id }}/complete">Complete?</a> 
 		<a href="/task/{{ task.id }}/delete">Delete?</a>
+	</div>
 		<br><br>
 	{% endfor %}
 	<p>Pages:

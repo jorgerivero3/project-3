@@ -155,4 +155,15 @@ def delete_task(task_id):
 	flash('Task Deleted', 'succss')
 	return redirect(url_for('ToDoList'))
 
-
+@application.route("/task/<int:task_id>/complete", methods=['GET'])
+@login_required
+def complete_task(task_id):
+	post = Task.query.get_or_404(task_id)
+	if post.author != current_user:
+		abort(403)
+	if post.complete:
+		post.complete = False
+	else:
+		post.complete = True
+	db.session.commit()
+	return redirect(url_for('ToDoList'))

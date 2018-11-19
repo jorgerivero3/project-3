@@ -36,7 +36,7 @@ class Task(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(20))
 	description = db.Column(db.String(200))
-	complete = db.Column(db.Boolean, nullable=False, default=True)
+	complete = db.Column(db.Boolean, nullable=False, default=False)
 	due = db.Column(db.DateTime, nullable=True)
 	#duration = db.Column(db.Integer, primary_key=True)
 	user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
