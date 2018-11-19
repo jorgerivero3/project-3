@@ -23,7 +23,7 @@ def ToDoList():
 	tasks = Task.query.filter_by(author=current_user.username)\
 	.order_by(Task.id.asc())\
 	.paginate(page=page, per_page=10)
-	return render_template('/todo_list.html', title='ToDoList')
+	return render_template('/todo_list.html', title='ToDoList', tasks=tasks, user=current_user)
 
 @application.route('/calendar')
 @login_required

@@ -5,15 +5,26 @@
 <div align="center">
 
 	<h1>To Do List</h1>
-
-	{% if current_user.is_authenticated %}
-		<h1>To be released soon!</h1>
-	{% else %}
-		<h1>Please log into your account!</h1><br>
-		<a href="/login">Login</a><br>
-		<a href="/register">Create an account</a>
-
-	{% endif%}
+	{% for task in tasks.items %}
+	<div class="task-block">
+		{{ task.title }}<br>
+		{% if task.due != null %}
+			{{ task.due }}
+		{% endif %}
+	{% end for %}
+	<p>Pages:
+		{% if page_num %}
+			{% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+				{% if tasks.page == page_num %}
+					<a href="{{ url_for('ToDoList', page=page_num) }}" style="font-weight: bold;">{{ page_num }}</a>
+				{% else %}
+					<a href="{{ url_for('ToDoList', page=page_num) }}">{{ page_num }}</a>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<a href="{{ url_for('ToDoList', page=1) }}" style="font-weight: bold;">1</a>
+		{% endif %}
+	</p>
 
 </div>
 
