@@ -8,9 +8,6 @@ import datetime
 def load_user(user_id):
 	return User.query.get(int(user_id))
 
-# Association Tables ("friend's list")
-friends = db.Table('friends', db.Column('self_id', db.Integer, db.ForeignKey('user.id')), db.Column('friend_id', db.Integer, db.ForeignKey('user.id')))
-
 # Models
 class User(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
