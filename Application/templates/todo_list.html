@@ -5,12 +5,16 @@
 <div align="center">
 
 	<h1>To Do List</h1>
+	<a href="/task/new" class="myButton">+ New Item</a><br><br><br><br>
 	{% for task in tasks.items %}
 	<div class="task-block">
 		{{ task.title }}<br>
-		{% if task.due != null %}
+		{% if task.due != None %}
 			{{ task.due }}
+		{% else %}
+			No Due Date
 		{% endif %}
+		<br><br>
 	{% endfor %}
 	<p>Pages:
 		{% if page_num %}

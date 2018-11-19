@@ -2,13 +2,13 @@ from Application.models import User
 from flask_login import current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, DateField, TextAreaField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange, ValidationError, Optional
 
 
 class NewItem(FlaskForm):
 	title = StringField("Task name", validators=[DataRequired(), Length(min=2, max=20)])
 	description = TextAreaField("Item description", validators=[DataRequired(), Length(max=750)])
-	due = DateField("Due date")
+	due = DateField("Due date", format='%m/%d/%Y', validators=[Optional()])
 	submit = SubmitField('List Task')
 
 class RegistrationForm(FlaskForm):
