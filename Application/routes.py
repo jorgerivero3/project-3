@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request
 from Application import application, db, bcrypt, mail
-from Application.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateInfo
-from Application.models import User
+from Application.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateInfo, NewItem
+from Application.models import User, Task
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 import sys
@@ -69,12 +69,10 @@ def account():
 		form.email.data = current_user.email
 	return render_template('account.html', title='Account Information', form=form)
 
-
 @application.route('/logout')
 def logout():
 	logout_user()
 	return redirect(url_for('home'))
-
 
 @application.route("/password_retrieval", methods=['GET', 'POST'])
 def password_retrieval():
@@ -91,12 +89,7 @@ def password_retrieval():
 def send_reset_email(user):
 	token = user.get_reset_token()
 	msg = Message('Password Reset Request', sender='noreply@demo.com', recipients=[user.email])
-	msg.body = f''' To reset your password, click the following link, or copy and
-paste it into your web browser:
-{url_for('reset_token', token=token, _external=True)}
-
-If you did not make this request then please ignore this email.
-'''
+	msg.body = f''' To reset your password, click the following link, or copy and paste it into your web browser: {url_for('reset_token', token=token, _external=True)} If you did not make this request then please ignore this email.'''
 	mail.send(msg)
 
 @application.route("/reset_token/<token>", methods=['GET', 'POST'])
@@ -115,3 +108,32 @@ def reset_token(token):
 		flash('Password has been updated.', 'success')
 		return redirect(url_for('login'))
 	return render_template('reset_token.html', title='Reset Password', form=form)
+
+@application.route("/task/new", methods=['GET', 'POST'])
+@login_required
+def taskListing():
+	form = NewItem()
+	if form.validate_on_submit():
+		post = Task(title=form.title.data, description=form.description.data, due=form.due.data, user=current_user.id)
+		db.session.add(post)
+		db.session.commit()
+		flash("Item Created", "success")
+		return redirect(url_for('ToDoList'))
+	return render_template('newItem.html', title='New Listing', form=form, legend="New Listing")
+
+''' taken from project 0
+@application.route("/listings/new", methods=['GET', 'POST'])
+@login_required
+def itemListing():
+	form = newItem()
+	if form.validate_on_submit():
+		_, f_ext = os.path.splitext(form.itemPic.data.filename)
+		post = Post(itemName=form.itemName.data, description=form.description.data, itemPrice=form.itemPrice.data, user=current_user.id, ext=f_ext)
+		db.session.add(post)
+		db.session.commit()
+		save_pic(form.itemPic.data, str(post.id), f_ext)
+		flash('Item Listed!', 'success')
+		return redirect(url_for('home'))
+	return render_template("newItem.html", title="New Item Listing", form=form, legend='New Listing')
+'''
+
