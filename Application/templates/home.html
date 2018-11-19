@@ -10,9 +10,9 @@
 
 	{% if current_user.is_authenticated %}
 		<div>
-            <button href="/calendar" class="myButton">View Calendar</a><br><br>
-            <a href="/todo_list" class="myButton">View To Do List</a><br><br>
-            <a href="/account" class="myButton">View Account</a><br><br>
+			<form method='GET' action ='/calendar'><button href="/calendar" class="myButton">VIEW CALENDAR</button><br>
+			<form method='GET' action ='/todo_list'><button href="/todo_list" class="myButton">VIEW TO DO LIST</button><br>
+			<form method='GET' action ='/account'><button href="/account" class="myButton">VIEW ACCOUNT</button><br>
       	</div>
 	{% else %}
 		<form method='GET' action ='/login'><button href="/login" class="myButton">LOGIN</button><br>
