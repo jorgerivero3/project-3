@@ -17,10 +17,16 @@ def about():
 	return render_template('/about.html', title='About')
 
 @application.route('/todo_list')
+@login_required
 def ToDoList():
+	page = request.args.get('page', 1, type=int)
+	tasks = Task.query.filter_by(author=current_user.username)\
+	.order_by(Task.id.asc())\
+	.paginate(page=page, per_page=10)
 	return render_template('/todo_list.html', title='ToDoList')
 
 @application.route('/calendar')
+@login_required
 def calendar():
 	return render_template('/calendar.html', title='Calendar')
 
@@ -70,6 +76,7 @@ def account():
 	return render_template('account.html', title='Account Information', form=form)
 
 @application.route('/logout')
+@login_requi
 def logout():
 	logout_user()
 	return redirect(url_for('home'))
