@@ -20,7 +20,7 @@ def about():
 @login_required
 def ToDoList():
 	page = request.args.get('page', 1, type=int)
-	tasks = Task.query.filter_by(author=current_user.username)\
+	tasks = Task.query.filter_by(author=current_user)\
 	.order_by(Task.id.asc())\
 	.paginate(page=page, per_page=10)
 	return render_template('/todo_list.html', title='ToDoList', tasks=tasks, user=current_user)
@@ -76,7 +76,7 @@ def account():
 	return render_template('account.html', title='Account Information', form=form)
 
 @application.route('/logout')
-@login_requi
+@login_required
 def logout():
 	logout_user()
 	return redirect(url_for('home'))

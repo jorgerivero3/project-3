@@ -11,7 +11,7 @@
 		{% if task.due != null %}
 			{{ task.due }}
 		{% endif %}
-	{% end for %}
+	{% endfor %}
 	<p>Pages:
 		{% if page_num %}
 			{% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
