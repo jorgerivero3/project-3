@@ -2,23 +2,23 @@
 {% block content %}
 
 <div align="center">
-      <h1>Your Account</h1>
+      <h2>Your Account</h2>
 
       <br><br>
 
       <div>
-            <form method='GET' action ='/calendar'><button href="/calendar" class="myButton">VIEW CALENDAR</button></form><br><br>
+            <form method='GET' action ='/calendar'><button href="/calendar" class="myButton">VIEW CALENDAR</button></form>
             <form method='GET' action ='/todo_list'><button href="/todo_list" class="myButton">VIEW TO DO LIST</button></form>
       </div>
       <!---account info--->
       <br><br>
 
-      <p style="font-size: 50px">Change Account Information</p>
+      <h2>Change Account Information</h2>
 
       <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
                 <div class="form-group">
-                    {{ form.username.label(class="form-control-label", style="color=#333333;") }}
+                    {{ form.username.label(class="form-control-label") }}
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-lg is-invalid") }}<br>
                         <div class="invalid-feedback">

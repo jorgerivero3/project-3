@@ -20,7 +20,13 @@ h1 {
   text-align: center;
   color: #333;
  }
-
+ h2 {
+  font-family: 'Now'; 
+  font-weight: bold;
+  font-size: 42px;
+  text-align: center;
+  color: #333;
+ }
 p {
   font-family: 'Now'; 
   font-weight: bold; 
@@ -84,20 +90,36 @@ body {
   color: #333333;
   text-transform: lowercase;
 }
+.intro {
+  padding: 0 300px 0;
+}
 input {
+    border: none;
+    border-bottom: 2px solid darkGray;
+    transition: 0.9s ease;
+    width: 260px;
+    background-color: transparent;
+    padding: 20px 0 20px 0;
+    font-family: 'Now';
+    font-weight: bold;
+}
+input:focus {
+  outline: none;
+}
+form {
+  font-family: 'Now';
+    font-weight: bold;
+    color: #333333;
+}
+textarea {
   border: none;
   border-bottom: 2px solid darkGray;
   transition: 0.9s ease;
   width: 260px;
   background-color: transparent;
-  padding: 10px 0;
-  font-family: 'airplane';
-  font-size: 25px;
-  color: black;
-  text-transform: lowercase;
-}
-input:focus {
-  outline: none;
+  padding: 20px 0 20px 0;
+  font-family: 'Now';
+  font-weight: bold;
 }
 *:focus {
   outline: none;
