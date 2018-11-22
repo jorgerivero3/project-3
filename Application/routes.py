@@ -4,6 +4,7 @@ from Application.forms import RegistrationForm, LoginForm, RequestResetForm, Res
 from Application.models import User, Task
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
+import calendar
 import sys
 import random
 
@@ -16,19 +17,9 @@ def home():
 def about():
 	return render_template('/about.html', title='About')
 
-@application.route('/todo_list')
-@login_required
-def ToDoList():
-	page = request.args.get('page', 1, type=int)
-	tasks = Task.query.filter_by(author=current_user)\
-	.order_by(Task.id.asc())\
-	.paginate(page=page, per_page=10)
-	return render_template('/todo_list.html', title='ToDoList', tasks=tasks, user=current_user)
 
-@application.route('/calendar')
-@login_required
-def calendar():
-	return render_template('/calendar.html', title='Calendar')
+
+
 
 @application.route('/register', methods=['GET', 'POST'])
 def register():
@@ -116,6 +107,20 @@ def reset_token(token):
 		return redirect(url_for('login'))
 	return render_template('reset_token.html', title='Reset Password', form=form)
 
+
+######################
+##### TO-DO LIST #####
+######################
+
+@application.route('/todo_list')
+@login_required
+def ToDoList():
+	page = request.args.get('page', 1, type=int)
+	tasks = Task.query.filter_by(author=current_user)\
+	.order_by(Task.id.asc())\
+	.paginate(page=page, per_page=10)
+	return render_template('/todo_list.html', title='ToDoList', tasks=tasks, user=current_user)
+
 @application.route("/task/new", methods=['GET', 'POST'])
 @login_required
 def taskListing():
@@ -128,22 +133,6 @@ def taskListing():
 		return redirect(url_for('ToDoList'))
 	return render_template('newItem.html', title='New Listing', form=form, legend="New Listing")
 
-''' taken from project 0
-@application.route("/listings/new", methods=['GET', 'POST'])
-@login_required
-def itemListing():
-	form = newItem()
-	if form.validate_on_submit():
-		_, f_ext = os.path.splitext(form.itemPic.data.filename)
-		post = Post(itemName=form.itemName.data, description=form.description.data, itemPrice=form.itemPrice.data, user=current_user.id, ext=f_ext)
-		db.session.add(post)
-		db.session.commit()
-		save_pic(form.itemPic.data, str(post.id), f_ext)
-		flash('Item Listed!', 'success')
-		return redirect(url_for('home'))
-	return render_template("newItem.html", title="New Item Listing", form=form, legend='New Listing')
-'''
-
 @application.route("/task/<int:task_id>/delete", methods=['GET'])
 @login_required
 def delete_task(task_id):
@@ -152,7 +141,7 @@ def delete_task(task_id):
 		abort(403)
 	db.session.delete(post)
 	db.session.commit()
-	flash('Task Deleted', 'succss')
+	flash('Task Deleted', 'success')
 	return redirect(url_for('ToDoList'))
 
 @application.route("/task/<int:task_id>/complete", methods=['GET'])
@@ -167,3 +156,31 @@ def complete_task(task_id):
 		post.complete = True
 	db.session.commit()
 	return redirect(url_for('ToDoList'))
+
+####################
+##### CALENDAR #####
+####################
+
+@application.route('/calendar')
+@login_required
+def cal():
+	myCal = calendar.HTMLCalendar(calendar.SUNDAY)
+	return render_template('/calendar.html', title='Calendar', myCal=myCal)
+
+@application.route("/event/new", methods=['GET', 'POST'])
+@login_required
+def eventListing():
+	return
+
+@application.route("/event/<int:event_id>/delete", methods=['GET'])
+@login_required
+def delete_event(event_id):
+	post = Event.query.get_or_404(event_id)
+	if post.author != current_user:
+		abort(403)
+	db.session.delete(post)
+	db.session.commit()
+	flash('Event Deleted', 'success')
+	return redirect(url_for('ToDoList'))
+
+

@@ -1,19 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<!---fullcalendar.io--->
+
 <!---calendar view--->
+
 <div align="center">
 
 	<h1>Calendar</h1>
 
-	{% if current_user.is_authenticated %}
-		<h1>To be released soon!</h1>
-	{% else %}
-		<h1>Please log into your account!</h1><br>
-		<a href="/login">Login</a><br>
-		<a href="/register">Create an account</a>
-
-	{% endif%}
+	{{ myCal.formatmonth(2018, 11)|safe }}
 	
 </div>
 
