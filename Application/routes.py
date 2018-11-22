@@ -19,8 +19,6 @@ def about():
 
 
 
-
-
 @application.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
@@ -161,10 +159,13 @@ def complete_task(task_id):
 ##### CALENDAR #####
 ####################
 
+class CustomHTMLCal(calendar.HTMLCalendar):
+	cssclasses = [style + " text-nowrap" for style in calendar.HTMLCalendar.cssclasses]
+
 @application.route('/calendar')
 @login_required
 def cal():
-	myCal = calendar.HTMLCalendar(calendar.SUNDAY)
+	myCal = CustomHTMLCal(calendar.SUNDAY)
 	return render_template('/calendar.html', title='Calendar', myCal=myCal)
 
 @application.route("/event/new", methods=['GET', 'POST'])
