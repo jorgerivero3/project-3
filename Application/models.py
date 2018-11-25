@@ -55,20 +55,18 @@ class DateTimePickerWidget(object):
     """
     Date Time picker from Eonasdan GitHub
     """
-    data_template=('<div class="container">'
-    	'<div class="row">'
-    	'<div class="col-sm-6">'
-        '<input type="text" class="form-control" id="due" name="due"/>'
-        '</div>'
-        '<script type="text/javascript">'
-        '$(function () {'
-        '$("#due").datetimepicker();'
-        '});'
-        '</script>'
-        '</div>'
+    data_template=(
+    	'<div class="container">'
+    		'<div class="col-sm-6">'
+        		'<input type="text" class="form-control" id="due" name="due"/>'
+        	'</div>'
+        	'<script type="text/javascript">'
+        		'$(function () {'
+        			'$("#due").datetimepicker();'
+        		'});'
+        	'</script>'
         '</div>'
         '<br>')
-
 
     def __call__(self, field, **kwargs):
         kwargs.setdefault('id', field.id)
@@ -77,8 +75,4 @@ class DateTimePickerWidget(object):
             field.data = ""
         template = self.data_template
 
-        return HTMLString(template % {'text': html_params(type='text',
-                                        value=field.data,
-                                        **kwargs)
-                                })
-
+        return HTMLString(template % {'text': html_params(type='text', value=field.data, **kwargs)})
