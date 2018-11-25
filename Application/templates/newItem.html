@@ -24,8 +24,6 @@
 			<div id="datetimepicker">
 				{{ form.due() }} <br><br>
 			</div>
-			<!-- Due Date (M/D/Y, optional)<br> -->
-			<!--{{ form.due(placeholder="Due date M/D/Y (optional)") }}<br><br><br>-->
 
 
 			{{ form.submit(class="myButton", align="center") }}
@@ -43,6 +41,7 @@
 		}
 		else{
 			document.getElementById('btn').innerHTML = '+ Add Deadline';
+			document.getElementById('due').value = null;
 			elt.style.display = 'none';
 		}
 	}

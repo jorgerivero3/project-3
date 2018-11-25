@@ -66,6 +66,7 @@ class DateTimePickerWidget(object):
         '});'
         '</script>'
         '</div>'
+        '</div>'
         '<br>')
 
 
