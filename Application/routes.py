@@ -168,6 +168,7 @@ def cal():
 	myCal = CustomHTMLCal(calendar.SUNDAY)
 	return render_template('/calendar.html', title='Calendar', myCal=myCal)
 
+''' might get rid of events
 @application.route("/event/new", methods=['GET', 'POST'])
 @login_required
 def eventListing():
@@ -183,5 +184,6 @@ def delete_event(event_id):
 	db.session.commit()
 	flash('Event Deleted', 'success')
 	return redirect(url_for('ToDoList'))
+'''
 
 
