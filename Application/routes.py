@@ -168,6 +168,11 @@ def cal():
 	myCal = CustomHTMLCal(calendar.SUNDAY)
 	return render_template('/calendar.html', title='Calendar', myCal=myCal)
 
+@application.route('/test')
+def test_cal():
+	tasks = current_user.posts
+	return render_template('test_calendar.html', tasks=tasks)
+
 ''' might get rid of events
 @application.route("/event/new", methods=['GET', 'POST'])
 @login_required

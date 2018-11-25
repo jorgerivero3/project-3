@@ -14,9 +14,21 @@
 
 <script>
 	$(function() {
-	// page is now ready, initialize the calendar...
 		$('#calendar').fullCalendar({
-		// put your options and callbacks here
-		})
+		
+			events:[
+				{% for task in tasks %}
+					{% if task.due != None %}
+						{
+							title: '{{ task.title }}',
+							start: '{{ task.due.year|string +'-'+ task.due.month|string +'-'+ task.due.day|string }}'
+						},
+					{% endif %}
+				{% endfor %}
+			]
+
+		});
 	});
 </script>
+
+{% endblock %}
