@@ -1,14 +1,4 @@
 @font-face {
-  font-family: 'Majesti';
-  src: url(./fonts/Majesti-Banner-Book.otf);
-}
-
-@font-face {
-  font-family: 'Blanch';
-  src: url(./fonts/BLANCH_CAPS.otf);
-}
-
-@font-face {
   font-family: 'airplane';
   src: url(./fonts/Airplane.ttf);
 }
@@ -69,6 +59,7 @@ body {
   font-family: 'Now';
   background: rgba(0,0,0,0.7);
   text-align:center;
+  text-transform: uppercase;
   transition: all 0.2s;
   width: 240px;
      /* margin-left: 35%; */
@@ -165,21 +156,23 @@ input:focus:-ms-input-placeholder { color:transparent; }
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 100;
 }
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: lightgrey;
   min-width: 250px;
-  z-index: 1;
+  z-index: 100;
   transition: 0.5s ease-out;
   transition: 0s ease-in;
+  right: 0;
 }
 .dropdown-content a {
-    color: black;
-    padding: 15px 15px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 15px 15px;
+  text-decoration: none;
+  display: block;
 }
 .dropdown-content a:hover {background-color: white; transition: 1s ease;}
 .dropdown:hover .dropdown-content {display: block;}
