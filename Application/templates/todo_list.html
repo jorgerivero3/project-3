@@ -14,7 +14,7 @@
 			{% endif %}
 			{{ task.title }}<br>
 			{% if task.due != None %}
-				{{ task.due }}<br>
+				Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
 			{% else %}
 				No Due Date<br>
 			{% endif %}

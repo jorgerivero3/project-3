@@ -1,6 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
 <div class="newListing" align="center">
 	<form method="POST" action="/task/new">
 		<h1>New Task</h1>
@@ -11,11 +20,32 @@
 			<!-- Brief description<br> -->
 			{{ form.description(placeholder="Brief description") }}<br><br><br>
 			
+			<button type="button" onclick="show();" id='btn'>+ Add Deadline</button><br><br>
+			<div id="datetimepicker">
+				{{ form.due() }} <br><br>
+			</div>
 			<!-- Due Date (M/D/Y, optional)<br> -->
-			{{ form.due(placeholder="Due date M/D/Y (optional)") }}<br><br><br>
-			{{ form.submit(class="myButton") }}
+			<!--{{ form.due(placeholder="Due date M/D/Y (optional)") }}<br><br><br>-->
+
+
+			{{ form.submit(class="myButton", align="center") }}
 		</p>
 	</form>
 </div>
+
+<script type="text/javascript">
+	document.getElementById("datetimepicker").style.display = 'none';
+	function show(){
+		var elt = document.getElementById("datetimepicker");
+		if (elt.style.display === 'none'){
+			document.getElementById('btn').innerHTML = '- Hide';
+			elt.style.display = 'block';
+		}
+		else{
+			document.getElementById('btn').innerHTML = '+ Add Deadline';
+			elt.style.display = 'none';
+		}
+	}
+</script>
 
 {% endblock %}

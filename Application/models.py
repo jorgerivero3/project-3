@@ -1,6 +1,7 @@
 from Application import db, login_manager, application
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from wtforms.widgets import HTMLString, html_params
 import datetime
 
 
@@ -38,13 +39,45 @@ class Task(db.Model):
 	description = db.Column(db.String(200))
 	complete = db.Column(db.Boolean, nullable=False, default=False)
 	due = db.Column(db.DateTime, nullable=True)
-	#duration = db.Column(db.Integer, primary_key=True)
 	user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-''' work out events later
-class Event(db.Model):
+'''class Event(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(20))
-	text = db.Column(db.String(200))
-	#time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+	description = db.Column(db.String(200))
+	start_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+	end_time = db.Column(db.DateTime, nullable=False)
+	user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable-False)
 '''
+
+
+class DateTimePickerWidget(object):
+    """
+    Date Time picker from Eonasdan GitHub
+    """
+    data_template=('<div class="container">'
+    	'<div class="row">'
+    	'<div class="col-sm-6">'
+        '<input type="text" class="form-control" id="due" name="due"/>'
+        '</div>'
+        '<script type="text/javascript">'
+        '$(function () {'
+        '$("#due").datetimepicker();'
+        '});'
+        '</script>'
+        '</div>'
+        '<br>')
+
+
+    def __call__(self, field, **kwargs):
+        kwargs.setdefault('id', field.id)
+        kwargs.setdefault('name', field.name)
+        if not field.data:
+            field.data = ""
+        template = self.data_template
+
+        return HTMLString(template % {'text': html_params(type='text',
+                                        value=field.data,
+                                        **kwargs)
+                                })
+
