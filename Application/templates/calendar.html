@@ -3,34 +3,44 @@
 
 <!---fullcalendar.io--->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css" media="print">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
 <!---calendar view--->
 
-<div align="center">
+<div id="calendar"></div>
 
-	<h1>Calendar</h1>
+<script>
+	$(function() {
 
-	<div class="idkwhythisisntworking">
-		{{ myCal.formatmonth(2018, 11)|safe }}
-	</div>
-	
-	
-	<!--<br><br>
-
-	{{ myCal.formatmonth(2018, 12)|safe }}
-
-	<br><br>
-
-	{{ myCal.formatmonth(2019, 1)|safe }}-->
-
-</div>
-
-<script type="text/javascript">
-	<!--
-	var ind = 0;
-	
-
-	// -->
+		var todayDate = moment().startOf('day');
+		
+		$('#calendar').fullCalendar({
+			
+			header: {
+				left: 'prev,next',
+				center: 'title',
+				right: 'month,agendaWeek'
+			},
+			height: 700,
+			editable: false,
+			eventLimit: true,
+			navLinks: false,
+			events:[
+				{% for task in tasks %}
+					{% if task.due != None %}
+						{
+							title: '{{ task.title }}',
+							start: '{{ task.due.year|string +'-'+ task.due.month|string +'-'+ task.due.day|string }}'
+						},
+					{% endif %}
+				{% endfor %}
+			]
+		});
+	});
 </script>
 
-
-{% endblock content %}
+{% endblock %}

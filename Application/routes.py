@@ -165,8 +165,8 @@ class CustomHTMLCal(calendar.HTMLCalendar):
 @application.route('/calendar')
 @login_required
 def cal():
-	myCal = CustomHTMLCal(calendar.SUNDAY)
-	return render_template('/calendar.html', title='Calendar', myCal=myCal)
+	tasks = current_user.posts
+	return render_template('calendar.html', tasks=tasks)
 
 @application.route('/test')
 def test_cal():
