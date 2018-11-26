@@ -165,13 +165,26 @@ class CustomHTMLCal(calendar.HTMLCalendar):
 @application.route('/calendar')
 @login_required
 def cal():
-	tasks = current_user.posts
-	return render_template('calendar.html', tasks=tasks)
+	titles = []
+	times = []
+	for task in current_user.posts:
+		if task.due != None:
+			titles.append(task.title)
+			hour = str(task.due.hour)
+			minute = str(task.due.minute)
+			day = str(task.due.day)
+			month = str(task.due.month)
+			if task.due.hour < 10:
+				hour = '0' + str(task.due.hour)
+			if task.due.minute < 10:
+				minute = '0' + str(task.due.minute)
+			if task.due.day < 10:
+				day = '0' + str(task.due.day)
+			if task.due.month < 10:
+				month = '0' + str(task.due.month)
+			times.append(str(task.due.year)+'-'+month+'-'+day+'T'+hour+':'+minute+":00")
+	return render_template('calendar.html', titles=titles, times=times)
 
-@application.route('/test')
-def test_cal():
-	tasks = current_user.posts
-	return render_template('test_calendar.html', tasks=tasks)
 
 ''' might get rid of events
 @application.route("/event/new", methods=['GET', 'POST'])

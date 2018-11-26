@@ -15,8 +15,6 @@
 
 <script>
 	$(function() {
-
-		var todayDate = moment().startOf('day');
 		
 		$('#calendar').fullCalendar({
 			
@@ -30,14 +28,16 @@
 			eventLimit: true,
 			navLinks: false,
 			events:[
-				{% for task in tasks %}
-					{% if task.due != None %}
-						{
-							title: '{{ task.title }}',
-							start: '{{ task.due.year|string +'-'+ task.due.month|string +'-'+ task.due.day|string }}'
-						},
-					{% endif %}
-				{% endfor %}
+			{% for title in titles %}
+				{
+					title : '{{ titles[loop.index0] }}',
+					start : '{{ times[loop.index0] }}',
+				},
+			{% endfor %}
+				{
+          			title  : 'filler',
+          			start  : '1970-01-01T00:00:00',
+        		}
 			]
 		});
 	});
