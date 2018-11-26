@@ -4,7 +4,7 @@
 <!---to do list--->
 <div align="center">
 
-	<h1>To Do List</h1>
+	<h2>To Do List</h2>
 	<form method='GET' action ='/task/new'><button href="/task/new" class="myButton">+ New Item</button></form><br><br><br><br>
 		{% for task in tasks.items %}
 			{% if task.complete==true %}
