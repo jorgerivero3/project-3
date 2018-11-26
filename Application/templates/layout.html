@@ -33,16 +33,16 @@
 		{% endif %}
 	</div>--->
 
-	<div class="dropdown">
+	<div class="dropdown" style="float: right" onclick="toggling(this), openNav(this)">
 		<button class="dropbtn">
-			<div class="container" onclick="myFunction(this)">
+			<div class="container">
   				<div class="bar1"></div>
   				<div class="bar2"></div>
   				<div class="bar3"></div>
 			</div> 
 		</button>
 
-		<div class="dropdown-content">
+		<div id="menu" class="dropdown-content">
 			<a href="/">Home</a>
 			<a href="/about">About</a>
 			<a href="/calendar">Calendar</a>
@@ -52,7 +52,7 @@
 				<a href="/account">Account</a>
 				<a href="/logout">Log Out</a>
 			{% else %}
-				<a href="/login">Login</a>
+				<a href="/login">Log In</a>
 				<a href="/register">Register</a>
 			{% endif %}
 		</div>
@@ -72,11 +72,20 @@
 	</div>
 
 	<script type="text/javascript">
-		function myFunction(x) {
+		function toggling(x) {
     		x.classList.toggle("change");
 		} 
+
+		function openNav(x) {
+		    document.getElementById("menu").style.width = "250px";
+		}
+
+		function closeNav() {
+		    document.getElementById("menu").style.width = "0";
+		}
 	</script>
 
+	<br><br><br><br><br><br>
    	{% block content %}{% endblock %}
 </body>
 
