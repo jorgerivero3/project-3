@@ -24,6 +24,13 @@ p {
   font-size: 15px;
   color: #333;
 }
+.task-block {
+  font-family: 'Now'; 
+  font-weight: bolder; 
+  font-style: normal;
+  font-size: 15px;
+  color: rgb(73, 58, 58);
+}
 
 a {
   font-family: 'Now'; 

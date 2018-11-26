@@ -20,10 +20,10 @@
 			<!-- Brief description<br> -->
 			{{ form.description(placeholder="Brief description") }}<br><br><br>
 			
-			<button type="button" onclick="show();" id='btn'>+ Add Deadline</button><br><br>
-			<div id="datetimepicker">
+			<p style='text-align: center;'><button type="button" onclick="show();" id='btn'>+ Add Deadline</button><br><br></p>
+			<p style='text-align: center;'><div id="datetimepicker">
 				{{ form.due() }} <br><br>
-			</div>
+			</div></p>
 
 
 			{{ form.submit(class="myButton", align="center") }}
