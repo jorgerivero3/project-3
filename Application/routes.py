@@ -11,6 +11,8 @@ import random
 
 @application.route('/')
 def home():
+	if current_user.is_authenticated:
+		return redirect(url_for('ToDoList'))
 	return render_template('/home.html', title='Home')
 
 @application.route('/about')
