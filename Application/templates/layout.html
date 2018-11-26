@@ -33,7 +33,7 @@
 		{% endif %}
 	</div>--->
 
-	<div class="dropdown" style="float: right" onclick="toggling(this), openNav(this)">
+	<div class="dropdown" style="float: left" onclick="toggling(this), openNav(this)">
 		<button class="dropbtn">
 			<div class="container">
   				<div class="bar1"></div>
@@ -78,10 +78,12 @@
 
 		function openNav(x) {
 		    document.getElementById("menu").style.width = "250px";
+		    console.log("openNav")
 		}
 
 		function closeNav() {
 		    document.getElementById("menu").style.width = "0";
+		    console.log("closeNav")
 		}
 	</script>
 

@@ -173,7 +173,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
   z-index: 100;
   transition: 0.5s ease-out;
   transition: 0s ease-in;
-  right: 0;
+  right: 100;
 }
 .dropdown-content a {
   color: black;
