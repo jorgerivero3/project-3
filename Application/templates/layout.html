@@ -32,17 +32,19 @@
 		</div>
 		{% endif %}
 	</div>--->
-
-	<div class="dropdown" style="float: left" onclick="toggling(this), openNav(this)">
-		<button class="dropbtn">
+    <div>
+	<div class="dropdown" onclick="openNav(this)">
+		<button class="open-btn">
 			<div class="container">
   				<div class="bar1"></div>
   				<div class="bar2"></div>
   				<div class="bar3"></div>
 			</div> 
 		</button>
+    </div>
 
 		<div id="menu" class="dropdown-content">
+            <a class="close-btn" onclick="closeNav(this)">&times;</a>
 			<a href="/">Home</a>
 			<a href="/about">About</a>
 			<a href="/calendar">Calendar</a>
@@ -57,6 +59,7 @@
 			{% endif %}
 		</div>
 	</div>
+    </div>
 
 
 	<div id="content" style="margin: 0 50px">
@@ -78,13 +81,14 @@
 
 		function openNav(x) {
 		    document.getElementById("menu").style.width = "250px";
-		    console.log("openNav")
+		    console.log("openNav");
 		}
 
-		function closeNav() {
-		    document.getElementById("menu").style.width = "0";
-		    console.log("closeNav")
-		}
+		function closeNav(x) {
+            document.getElementById("menu").style.width = "0";
+            console.log("closeNav");
+        }
+
 	</script>
 
 	<br><br><br><br><br><br>
