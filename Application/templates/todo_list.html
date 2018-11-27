@@ -3,14 +3,18 @@
 
 <!---to do list--->
 <div align="center">
+    <div class="row">
+	<h1 class="col">To Do List</h1>
+	<form method='GET' action ='/task/new'><button href="/task/new" class="myButton">+ New Item</button></form>
+    </div>
+        <div class="list-group-flush" id="tasks">
 
-	<h1>To Do List</h1>
-	<form method='GET' action ='/task/new'><button href="/task/new" class="myButton">+ New Item</button></form><br><br><br><br>
 		{% for task in tasks.items %}
-			{% if task.complete==true %}
-				<div class="task-block" style="text-decoration: line-through;">
+            <div class="list-group-item list-group-item-primary">
+			{% if task.complete %}
+                <div style="text-decoration: line-through;">
 			{% else %}
-				<div class="task-block" style="text-decoration: none;">
+                <div style="text-decoration: none;">
 			{% endif %}
 			{{ task.title }}<br>
 			{% if task.due != None %}
@@ -18,12 +22,14 @@
 			{% else %}
 				No Due Date<br>
 			{% endif %}
+            </div>
 			<a href="/task/{{ task.id }}/complete">Complete?</a> 
 			<a href="/task/{{ task.id }}/delete">Delete?</a>
-		</div>
-		<br><br>
+
+            </div>
+
 		{% endfor %}
-	</form>
+         </div>
 
 	<p>
 		Pages:

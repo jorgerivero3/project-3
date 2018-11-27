@@ -7,6 +7,11 @@
 <!---
 	<link rel="shortcut icon" href="{{url_for('static', filename='favicon.png')}}" >
 	<link rel="icon" href="{{url_for('static', filename='favicon.png')}}"> --->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<link rel="shortcut icon" href="{{url_for('static', filename='verified.png')}}" >
 	<link rel="icon" href="{{url_for('static', filename='verified.png')}}">
 	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/now" type="text/css"/>
@@ -81,12 +86,12 @@
 
 		function openNav(x) {
 		    document.getElementById("menu").style.width = "250px";
-		    console.log("openNav");
+		    document.getElementById("main").style.marginLeft = "250px";
 		}
 
 		function closeNav(x) {
             document.getElementById("menu").style.width = "0";
-            console.log("closeNav");
+            document.getElementById("main").style.marginLeft = "0px";
         }
 
 	</script>
