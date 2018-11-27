@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'airplane';
-  src: url(./fonts/Airplane.ttf);
+  font-family: 'blanch';
+  src: url(./fonts/BLANCH_CAPS.otf);
 }
 
 h1 {
@@ -41,11 +41,10 @@ a {
 }
 
 span {
-	font-family: 'airplane'; 
+	font-family: 'blanch'; 
   font-weight: normal; 
   font-style: normal;
   font-size: 15px;
-  text-transform: lowercase; 
 }
  
 body {
@@ -84,9 +83,8 @@ body {
 }
 
 .theForm {
-  font-family: 'airplane';
+  font-family: 'blanch';
   color: #333333;
-  text-transform: lowercase;
 }
 .intro {
   padding: 0 300px 0;
@@ -134,7 +132,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
   overflow: hidden;
   background-color: #333333;
   padding: 15px 25px;
-  font-family: 'Blanch';
+  font-family: 'blanch';
   font-size: 15px;
 }
 .navBar a {
