@@ -9,6 +9,8 @@ h1 {
   font-size: 70px;
   text-align: center;
   color: #333;
+  width: 400px;
+  float: left;
  }
  h2 {
   font-family: 'Now';

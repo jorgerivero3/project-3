@@ -2,10 +2,14 @@
 {% block content %}
 
 <!---to do list--->
-<div align="center">
+<div align="center" id="main">
     <div class="row">
-	<h1 class="col">To Do List</h1>
-	<form method='GET' action ='/task/new'><button href="/task/new" class="myButton">+ New Item</button></form>
+    <div class="col-sm">
+	    <h1 >To Do List</h1>
+    </div>
+    <div class="col-sm" style="padding-top: 30px;">
+	<form method='GET' action ='/task/new'><button href="/task/new" class="myButton" style="float: right; ">+ New Item</button></form>
+    </div>
     </div>
         <div class="list-group-flush" id="tasks">
 
@@ -29,8 +33,7 @@
             </div>
 
 		{% endfor %}
-         </div>
-
+         </div><br>
 	<p>
 		Pages:
 			{% if page_num %}
