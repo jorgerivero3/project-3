@@ -9,9 +9,27 @@ h1 {
   font-size: 70px;
   text-align: center;
   color: #333;
-  width: 400px;
+    width: 400px;
   float: left;
  }
+.landing_text{
+    font-size: 60px;
+    float: none;
+}
+
+.list-group-flush{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.row{
+    padding-left: 45px;
+    padding-right: 45px;
+    background-color: #9C1A1C;
+    background-clip: content-box;
+
+}
+
  h2 {
   font-family: 'Now';
   font-weight: bold;
@@ -83,6 +101,17 @@ body {
   color: white;
   background: #002e4d;
   border-radius: 5px;
+}
+.addButton{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    font-size: 50px;
+    position:absolute;
+    right: 50px;
+    padding-bottom: 50px;
 }
 
 
