@@ -6,7 +6,7 @@
 
 <div class="newListing" align="center">
 	<form method="POST" action="/task/new">
-		<h1>New Task</h1>
+		<h2>New Task</h2>
 		{{ form.hidden_tag() }}
 		<p>
 			<!-- Task Name<br> -->
@@ -15,13 +15,18 @@
 			{{ form.description(placeholder="Brief description") }}<br><br><br>
 			
 			<p style='text-align: center;'><button type="button" onclick="show();" id='btn'>+ Add Deadline</button><br><br></p>
-			<p style='text-align: center;'><div id="datetimepicker">
-				{{ form.due() }} <br><br>
-			</div></p>
+			
+			<!-- Date picker -->
+			<p style='text-align: center;'> 
+				<div id="datetimepicker">
+				{{ form.due() }} 
+				</div>
+			</p>  <br><br>
+			
 
 
 			{{ form.submit(class="myButton", align="center") }}
-		</p>
+		
 	</form>
 </div>
 

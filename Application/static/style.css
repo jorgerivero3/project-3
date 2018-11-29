@@ -122,6 +122,22 @@ body {
 .intro {
   padding: 0 300px 0;
 }
+.form-control {
+  margin: 0;
+  padding: 0;
+}
+#due {
+  position: absolute;
+  margin: 0 62% 0 ;
+  border: none;
+  border-bottom: 2px solid darkGray;
+  transition: 0.9s ease;
+  width: 265px;
+  background-color: transparent;
+  padding: 20px 0 20px 0;
+  font-family: 'Now';
+  font-weight: bold;
+}
 input {
     border: none;
     border-bottom: 2px solid darkGray;
@@ -191,6 +207,10 @@ input:focus:-ms-input-placeholder { color:transparent; }
   border: none;
   transition: 0.5s ease;
   z-index: 1;
+}
+.datetimepicker {
+  position: absolute;
+  margin: 0 50% 0;
 }
 .dropdown {
   position: absolute;
