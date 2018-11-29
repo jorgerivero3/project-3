@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ed6a6fd-2ffd-4c98-ad45-4defc1949568" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/Application/app.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Application/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/templates/calendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/templates/calendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/templates/newItem.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/templates/newItem.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/templates/todo_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/Application/templates/todo_list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/static/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="116" column="22" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
+            <state relative-caret-position="349">
+              <caret line="117" column="22" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -103,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/Application/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="121">
-              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+              <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
               <folding>
                 <element signature="e#1576#1583#1#HTML" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -117,12 +120,13 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/templates/todo_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+            <state relative-caret-position="90">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
               <folding>
+                <element signature="e#221#247#0#HTML" expanded="true" />
                 <element signature="e#291#328#0#HTML" expanded="true" />
                 <element signature="e#461#499#0#HTML" expanded="true" />
                 <element signature="e#536#566#0#HTML" expanded="true" />
@@ -136,7 +140,7 @@
         <entry file="file://$PROJECT_DIR$/Application/templates/newItem.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+              <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -156,8 +160,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/templates/calendar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+            <state relative-caret-position="645">
+              <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -192,8 +196,8 @@
         <option value="$PROJECT_DIR$/Application/templates/newItem.html" />
         <option value="$PROJECT_DIR$/Application/templates/layout.html" />
         <option value="$PROJECT_DIR$/Application/templates/home.html" />
-        <option value="$PROJECT_DIR$/Application/templates/todo_list.html" />
         <option value="$PROJECT_DIR$/Application/static/style.css" />
+        <option value="$PROJECT_DIR$/Application/templates/todo_list.html" />
       </list>
     </option>
   </component>
@@ -448,15 +452,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/templates/calendar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="6" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+        <state relative-caret-position="645">
+          <caret line="43" column="6" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/templates/newItem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -480,23 +484,10 @@
     <entry file="file://$PROJECT_DIR$/Application/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
-          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+          <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
           <folding>
             <element signature="e#1576#1583#1#HTML" expanded="true" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/templates/todo_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-          <folding>
-            <element signature="e#291#328#0#HTML" expanded="true" />
-            <element signature="e#461#499#0#HTML" expanded="true" />
-            <element signature="e#536#566#0#HTML" expanded="true" />
-            <element signature="e#1271#1297#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -506,8 +497,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/static/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="116" column="22" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
+        <state relative-caret-position="349">
+          <caret line="117" column="22" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/templates/todo_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding>
+            <element signature="e#221#247#0#HTML" expanded="true" />
+            <element signature="e#291#328#0#HTML" expanded="true" />
+            <element signature="e#461#499#0#HTML" expanded="true" />
+            <element signature="e#536#566#0#HTML" expanded="true" />
+            <element signature="e#1271#1297#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

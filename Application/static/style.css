@@ -24,14 +24,15 @@ h1 {
 }
 
 .list-group-flush{
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 500px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
 }
 
 .row{
     padding-left: 45px;
     padding-right: 45px;
-    background-color: #9C1A1C;
+    /* background-color: #9C1A1C; */
     background-clip: content-box;
 
 }
@@ -74,7 +75,7 @@ span {
 }
 
 body {
-  background-color: #6699cc;
+  background-color: #f1f1f1;
   background-position: center;
   height: 600px;
 }
@@ -196,10 +197,14 @@ input:focus:-ms-input-placeholder { color:transparent; }
   border: none;
   transition: 0.5s ease;
   z-index: 1;
+   padding-right: 300%;
+
 }
 .dropdown {
   position: absolute;
   display: inline-block;
+
+
 }
 .dropdown-content .close-btn{
     position: absolute;
@@ -220,6 +225,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
   padding-top: 60px;
   transition: 0.5s ease-out;
   transition: 0.5s ease-in;
+
 
 }
 .dropdown-content a {

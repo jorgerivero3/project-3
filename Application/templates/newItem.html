@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
 
 <div class="newListing" align="center">
@@ -8,7 +10,7 @@
 		{{ form.hidden_tag() }}
 		<p>
 			<!-- Task Name<br> -->
-			{{ form.title(placeholder="Sick0 Mode") }}<br><br><br>
+			{{ form.title(placeholder="Task Name") }}<br><br><br>
 			<!-- Brief description<br> -->
 			{{ form.description(placeholder="Brief description") }}<br><br><br>
 			
