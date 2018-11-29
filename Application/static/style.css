@@ -9,12 +9,18 @@ h1 {
   font-size: 70px;
   text-align: center;
   color: #333;
-    width: 400px;
   float: left;
  }
 .landing_text{
     font-size: 60px;
     float: none;
+}
+.taskTitle{
+    font-size: 65px;
+    padding-left: 0;
+    left: 50px;
+    width: 250px;
+    top: 150px;
 }
 
 .list-group-flush{
@@ -107,10 +113,10 @@ body {
     border: none;
     cursor:pointer;
     overflow: hidden;
-    font-size: 50px;
-    position:absolute;
+    font-size: 60px;
+    position: absolute;
     right: 50px;
-    padding-bottom: 50px;
+    height: 60px;
 }
 
 
