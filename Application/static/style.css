@@ -18,14 +18,15 @@ h1 {
 }
 
 .list-group-flush{
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 500px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
 }
 
 .row{
     padding-left: 45px;
     padding-right: 45px;
-    background-color: #9C1A1C;
+    /* background-color: #9C1A1C; */
     background-clip: content-box;
 
 }
@@ -68,7 +69,7 @@ span {
 }
 
 body {
-  background-color: #6699cc;
+  background-color: #f1f1f1;
   background-position: center;
   height: 600px;
 }
