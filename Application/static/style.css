@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'airplane';
-  src: url(./fonts/Airplane.ttf);
-}
+  font-family: 'airplane';	  font-family: 'blanch';
+  src: url(./fonts/Airplane.ttf);	  src: url(./fonts/BLANCH_CAPS.otf);
+}	
 
 h1 {
   font-family: 'Now';
@@ -18,14 +18,15 @@ h1 {
 }
 
 .list-group-flush{
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 500px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
 }
 
 .row{
     padding-left: 45px;
     padding-right: 45px;
-    background-color: #9C1A1C;
+    /* background-color: #9C1A1C; */
     background-clip: content-box;
 
 }
@@ -61,7 +62,7 @@ a {
 }
 
 span {
-	font-family: 'airplane';
+	font-family: 'blanch';
   font-weight: normal;
   font-style: normal;
   font-size: 15px;
@@ -69,7 +70,7 @@ span {
 }
 
 body {
-  background-color: #6699cc;
+  background-color: #f1f1f1;
   background-position: center;
   height: 600px;
 }
@@ -116,7 +117,7 @@ body {
 
 
 .theForm {
-  font-family: 'airplane';
+  font-family: 'blanch';
   color: #333333;
   text-transform: lowercase;
 }
