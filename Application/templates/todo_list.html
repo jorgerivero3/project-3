@@ -24,7 +24,7 @@
 			{% if task.due != None %}
 				Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
 			{% else %}
-				No Due Date<br>
+				Undated<br>
 			{% endif %}
             </div>
 			<a href="/task/{{ task.id }}/complete">Complete?</a> 

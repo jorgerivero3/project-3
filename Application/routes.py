@@ -117,7 +117,7 @@ def reset_token(token):
 def ToDoList():
 	page = request.args.get('page', 1, type=int)
 	tasks = Task.query.filter_by(author=current_user)\
-	.order_by(Task.id.asc())\
+	.order_by(Task.due.asc())\
 	.paginate(page=page, per_page=10)
 	return render_template('/todo_list.html', title='ToDoList', tasks=tasks, user=current_user)
 
