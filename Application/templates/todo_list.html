@@ -3,6 +3,10 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<div class="col-sm" style="padding-bottom: 15px; position: relative; top: -345px;">
+	<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
+</div>
+
 <!---to do list--->
 <div align="center" id="main" style="position: relative; top: -30px">
     <div class="row">
@@ -47,28 +51,22 @@
 				{% endif %}
 	            </div>
             </div>
-
 		{% endfor %}
     </div>
-	
-	<div class="col-sm" style="padding-bottom: 15px; position: relative; top: -345px;">
-		<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
-    </div>
 
-	<p>
-		Pages:
-			{% if page_num %}
-				{% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-					{% if tasks.page == page_num %}
-						<a href="{{ url_for('ToDoList', page=page_num) }}" style="font-weight: bold;">{{ page_num }}</a>
-					{% else %}
-						<a href="{{ url_for('ToDoList', page=page_num) }}">{{ page_num }}</a>
-					{% endif %}
-				{% endfor %}
+    <br>
+    Page:
+    {% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    	{% if page_num %}
+    		{% if tasks.page == page_num %}
+				<a href="{{ url_for('ToDoList', page=page_num) }}" style="font-weight: bold;">{{ page_num }}</a>
 			{% else %}
-				<a href="{{ url_for('ToDoList', page=1) }}" style="font-weight: bold;">1</a>
+				<a href="{{ url_for('ToDoList', page=page_num) }}" style="font-weight: normal;">{{ page_num }}</a>
 			{% endif %}
-	</p>
+		{% else %}
+			...
+		{% endif %}
+	{% endfor %}
 
 </div>
 
