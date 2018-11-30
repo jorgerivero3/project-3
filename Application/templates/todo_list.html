@@ -20,11 +20,11 @@
 			{% else %}
                 <div style="text-decoration: none;">
 			{% endif %}
-			{{ task.title }}<br>
+			<a href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
 			{% if task.due != None %}
 				Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
 			{% else %}
-				No Due Date<br>
+				Undated<br>
 			{% endif %}
             </div>
 			<a href="/task/{{ task.id }}/complete">Complete?</a> 

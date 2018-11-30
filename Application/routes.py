@@ -19,8 +19,6 @@ def home():
 def about():
 	return render_template('/about.html', title='About')
 
-
-
 @application.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
@@ -34,7 +32,6 @@ def register():
 		flash('Account creation succesful!', 'success')
 		return redirect(url_for('login'))
 	return render_template('register.html', title='Register', form=form)
-
 
 @application.route('/login', methods=['GET', 'POST'])
 def login():
@@ -117,7 +114,7 @@ def reset_token(token):
 def ToDoList():
 	page = request.args.get('page', 1, type=int)
 	tasks = Task.query.filter_by(author=current_user)\
-	.order_by(Task.id.asc())\
+	.order_by(Task.due.asc())\
 	.paginate(page=page, per_page=10)
 	return render_template('/todo_list.html', title='ToDoList', tasks=tasks, user=current_user)
 
@@ -157,6 +154,13 @@ def complete_task(task_id):
 	db.session.commit()
 	return redirect(url_for('ToDoList'))
 
+@application.route("/view/<int:task_id>")
+def view(task_id):
+	post = Task.query.get_or_404(task_id)
+	if post.author != current_user:
+		abort(403)
+	return render_template('post.html', title=post.title, post=post)
+
 ####################
 ##### CALENDAR #####
 ####################
@@ -168,10 +172,12 @@ class CustomHTMLCal(calendar.HTMLCalendar):
 @login_required
 def cal():
 	titles = []
+	ids = []
 	times = []
 	for task in current_user.posts:
 		if task.due != None:
 			titles.append(task.title)
+			ids.append(task.id)
 			hour = str(task.due.hour)
 			minute = str(task.due.minute)
 			day = str(task.due.day)
@@ -185,7 +191,7 @@ def cal():
 			if task.due.month < 10:
 				month = '0' + str(task.due.month)
 			times.append(str(task.due.year)+'-'+month+'-'+day+'T'+hour+':'+minute+":00")
-	return render_template('calendar.html', titles=titles, times=times)
+	return render_template('calendar.html', titles=titles, ids=ids, times=times)
 
 
 ''' might get rid of events
