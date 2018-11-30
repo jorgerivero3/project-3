@@ -9,7 +9,10 @@
 
 <!---calendar view--->
 <div id="main">
-<div id="calendar" class="list-group-flush" style="position: relative; background:white; width:95%; margin:0 auto; padding:30px; top:-30px; border-radius: 4px; border: 1px solid rgb(222, 222, 222);"></div>
+<div id="calendar" style="position: relative; background:white; width:85%; margin:0 auto; padding:30px; top:-30px; left:-30px; border-radius: 4px; border: 1px solid rgb(222, 222, 222);"></div>
+<div style="position:relative; top:-780px; left:30px; float: right;">
+	<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
+</div>
 
 <script>
 	$(function() {
@@ -28,7 +31,7 @@
 			events:[
 			{% for title in titles %}
 				{
-					title : '{{ titles[loop.index0] }}',
+					title : '{{ (titles[loop.index0] | tojson)[1:-1] }}',
 					url: '{{ url_for("view", task_id=ids[loop.index0]) }}',
 					start : '{{ times[loop.index0] }}',
 				},

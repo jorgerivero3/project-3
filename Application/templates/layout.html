@@ -3,14 +3,64 @@
 <head>
     <meta charset="UTF-8" />
 	<title>Get Organized</title>
-	<meta name="description" content="Answer questions?" />
-<!---
-	<link rel="shortcut icon" href="{{url_for('static', filename='favicon.png')}}" >
-	<link rel="icon" href="{{url_for('static', filename='favicon.png')}}"> --->
+	<meta name="description" content="Organizer" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+	
+	<script type="text/javascript">
+		function openNav(x){
+		    document.getElementById("menu").style.width = "250px";
+		    document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav(x){
+            document.getElementById("menu").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0px";
+        }
+
+        var xhr;
+        if (window.ActiveXObject){
+        	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        else if (window.XMLHttpRequest){
+        	xhr = new XMLHttpRequest();
+        }
+        function callServer(){
+        	var url = "/notifs";
+        	xhr.open("GET", url, true);
+        	xhr.onreadystatechange = notifs;
+        	xhr.send(null);
+        }
+        function notifs(){
+        	if ((xhr.readyState == 4) && (xhr.status == 200)){
+        		var response = xhr.responseText;
+        		if (response != " "){
+        			a = response.split("-");
+        			for (var i=0;i<a.length;i+=2){
+        				time = Number(a[i+1]);
+        				let ii = i;
+        				remind = time - 1800000;
+        				if (remind > 0){
+        					setTimeout(function(){alert2(ii);}, remind);
+        				}
+        				setTimeout(function(){alert1(ii);}, time);
+        			}
+        		}
+        	}
+		}
+		function alert1(num){
+			window.alert(a[num]+" is due now.")
+		}
+		function alert2(num){
+			window.alert(a[num]+" is due in 30 minutes.");
+		}
+		{% if current_user.is_authenticated %}
+			callServer();
+		{% endif %}
+	</script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -19,26 +69,8 @@
 	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/now" type="text/css"/>
     <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css') }}" type="text/css"/>
 </head>
-<body>
-	<!---<div class="navBar">
-		<div align="left" style="position: relative; top: 10px;">
-			<a href="/">Calendar</a>
-			<a href="/todo_list">To Do List</a>
-		</div>
 
-		{% if current_user.is_authenticated %}	
-		<div align="right" style="position: relative; top: -9px;">
-			<a href="/account">Account</a>
-			<a href="/logout">Logout</a>
-		</div>
-		
-		{% else %}
-		<div align="right" style="position: relative; top: -9px;">
-			<a href="/login">Login</a>
-			<a href="/register">Register</a>
-		</div>
-		{% endif %}
-	</div>--->
+<body style="width: 100%; overflow: hidden;">
     <div>
 	<div class="dropdown" onclick="openNav(this)">
 		<button class="open-btn">
@@ -49,7 +81,6 @@
 			</div> 
 		</button>
     </div>
-
 		<div id="menu" class="dropdown-content">
             <a class="close-btn" onclick="closeNav(this)">&times;</a>
 			<a href="/">Home</a>
@@ -67,39 +98,22 @@
 		</div>
 	</div>
     </div>
-
-
 	<div id="content" style="margin: 0 50px">
 	 	{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
 				{% for catergory, message in messages %}
-					<div class = "alert alert-{{ category }}">
+					<div class = "alert alert-{{ category }}" style="padding-bottom: 2px">
 						<p>{{ message }}</p>
 					</div>
 				{% endfor %}
+				<br><br><br>
+			{% else%}
+				<br><br><br><br><br><br>
 			{% endif %}
 		{% endwith %}
 	</div>
+	
+	{% block content %}{% endblock %}
 
-	<script type="text/javascript">
-		function toggling(x) {
-    		x.classList.toggle("change");
-		} 
-
-		function openNav(x) {
-		    document.getElementById("menu").style.width = "250px";
-		    document.getElementById("main").style.marginLeft = "250px";
-		}
-
-		function closeNav(x) {
-            document.getElementById("menu").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0px";
-        }
-
-	</script>
-
-	<br><br><br><br><br><br>
-   	{% block content %}{% endblock %}
 </body>
-
 </html>

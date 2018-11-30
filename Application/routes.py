@@ -4,15 +4,13 @@ from Application.forms import RegistrationForm, LoginForm, RequestResetForm, Res
 from Application.models import User, Task
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
-import calendar
-import sys
+from datetime import datetime, timedelta
 import random
+import sys
 
 
 @application.route('/')
 def home():
-	if current_user.is_authenticated:
-		return redirect(url_for('ToDoList'))
 	return render_template('/home.html', title='Home')
 
 @application.route('/about')
@@ -104,7 +102,6 @@ def reset_token(token):
 		return redirect(url_for('login'))
 	return render_template('reset_token.html', title='Reset Password', form=form)
 
-
 ######################
 ##### TO-DO LIST #####
 ######################
@@ -165,9 +162,6 @@ def view(task_id):
 ##### CALENDAR #####
 ####################
 
-class CustomHTMLCal(calendar.HTMLCalendar):
-	cssclasses = [style + " text-nowrap" for style in calendar.HTMLCalendar.cssclasses]
-
 @application.route('/calendar')
 @login_required
 def cal():
@@ -193,23 +187,21 @@ def cal():
 			times.append(str(task.due.year)+'-'+month+'-'+day+'T'+hour+':'+minute+":00")
 	return render_template('calendar.html', titles=titles, ids=ids, times=times)
 
+#########################
+##### NOTIFICATIONS #####
+#########################
 
-''' might get rid of events
-@application.route("/event/new", methods=['GET', 'POST'])
+# takes advantage of ajax
+@application.route('/notifs', methods=['GET'])
 @login_required
-def eventListing():
-	return
-
-@application.route("/event/<int:event_id>/delete", methods=['GET'])
-@login_required
-def delete_event(event_id):
-	post = Event.query.get_or_404(event_id)
-	if post.author != current_user:
-		abort(403)
-	db.session.delete(post)
-	db.session.commit()
-	flash('Event Deleted', 'success')
-	return redirect(url_for('ToDoList'))
-'''
-
-
+def notif():
+	response = ""
+	for task in current_user.posts:
+		if task.due != None:# and task.complete == False:
+			dif = int((task.due - datetime.now()).total_seconds() * 1000)
+			if dif > 0:
+				response += task.title+"-"+str(dif)+"-"
+	if response != "":
+		response = response[:-1]
+		return response
+	return ' '

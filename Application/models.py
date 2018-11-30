@@ -41,20 +41,9 @@ class Task(db.Model):
 	due = db.Column(db.DateTime, nullable=True)
 	user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-'''class Event(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	title = db.Column(db.String(20))
-	description = db.Column(db.String(200))
-	start_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-	end_time = db.Column(db.DateTime, nullable=False)
-	user = db.Column(db.Integer, db.ForeignKey('user.id'), nullable-False)
-'''
-
-
+# widget for picking date/time for tasks
 class DateTimePickerWidget(object):
-    """
-    Date Time picker from Eonasdan GitHub
-    """
+	# Date Time picker from Eonasdan GitHub
     data_template=(
     	'<div class="container">'
     		'<div class="col-sm-6">'
@@ -74,5 +63,4 @@ class DateTimePickerWidget(object):
         if not field.data:
             field.data = ""
         template = self.data_template
-
         return HTMLString(template % {'text': html_params(type='text', value=field.data, **kwargs)})

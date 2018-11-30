@@ -2,7 +2,7 @@
 {% block content %}
 
 <div align="center">
-	<h2>Welcome!</h2>
+	<h2>Welcome!</h2><br>
 	<div class='intro'>
 		<p>
 			We provide an easy-to-use, linked calendar and to-do list for you to organize your chaotic life!
@@ -10,18 +10,16 @@
 			 The to-do list will show you your upcoming tasks, meetings, and events for the week.
 		</p>
 	</div>
-	<br><br><br>
+	<br><br>
 
 	{% if current_user.is_authenticated %}
 		<div>
-            <form method='GET' action ='/calendar'><button href="/calendar" class="myButton">VIEW CALENDAR</button><br></form>
-            <form method='GET' action ='/todo_list'><button href="/todo_list" class="myButton">VIEW TO DO LIST</button><br></form>
-            <form method='GET' action ='/account'><button href="/account" class="myButton">VIEW ACCOUNT</button><br></form>
+            <form method='GET' action ='/todo_list'><button href="/todo_list" class="myButton">GET STARTED!</button><br></form>
       	</div>
 	{% else %}
-		<form method='GET' action ='/login'><button href="/login" class="myButton">LOG IN</button><br></form>
-		<form method='GET' action ='/register'><button href="/register" class="myButton">NEED AN ACCOUNT?</button></form>
-
+		<div>
+            <form method='GET' action ='/register'><button href="/register" class="myButton">GET STARTED!</button><br></form>
+      	</div>
 	{% endif%}
 </div>
 

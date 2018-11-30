@@ -17,10 +17,10 @@
 
       <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
-                <div class="form-group">
+                <div class="form-group" style="width: 400px;">
                     {{ form.username.label(class="form-control-label") }}
                     {% if form.username.errors %}
-                        {{ form.username(class="form-control form-control-lg is-invalid") }}<br>
+                        {{ form.username(class="form-control form-control-lg is-invalid", style="width:50px") }}<br>
                         <div class="invalid-feedback">
                             {% for error in form.username.errors %}
                                 <span>{{ error }}</span>
@@ -30,7 +30,7 @@
                         {{ form.username(class="form-control form-control-lg") }}<br>
                     {% endif %}
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="width: 400px;">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
                         {{ form.email(class="form-control form-control-lg is-invalid") }}
