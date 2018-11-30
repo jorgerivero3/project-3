@@ -29,6 +29,7 @@
 			{% for title in titles %}
 				{
 					title : '{{ titles[loop.index0] }}',
+					url: '{{ url_for("view", task_id=ids[loop.index0]) }}',
 					start : '{{ times[loop.index0] }}',
 				},
 			{% endfor %}
@@ -36,7 +37,12 @@
           			title  : 'filler',
           			start  : '1970-01-01T00:00:00',
         		}
-			]
+			],
+			eventClick: function(eventObj){
+				window.open(eventObj.url);
+				return false;
+			}
+
 		});
 	});
 </script>

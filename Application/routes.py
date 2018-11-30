@@ -172,10 +172,12 @@ class CustomHTMLCal(calendar.HTMLCalendar):
 @login_required
 def cal():
 	titles = []
+	ids = []
 	times = []
 	for task in current_user.posts:
 		if task.due != None:
 			titles.append(task.title)
+			ids.append(task.id)
 			hour = str(task.due.hour)
 			minute = str(task.due.minute)
 			day = str(task.due.day)
@@ -189,7 +191,7 @@ def cal():
 			if task.due.month < 10:
 				month = '0' + str(task.due.month)
 			times.append(str(task.due.year)+'-'+month+'-'+day+'T'+hour+':'+minute+":00")
-	return render_template('calendar.html', titles=titles, times=times)
+	return render_template('calendar.html', titles=titles, ids=ids, times=times)
 
 
 ''' might get rid of events
