@@ -4,7 +4,7 @@ from Application.forms import RegistrationForm, LoginForm, RequestResetForm, Res
 from Application.models import User, Task
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
-import calendar
+from datetime import datetime, timedelta
 import sys
 import random
 
@@ -165,9 +165,6 @@ def view(task_id):
 ##### CALENDAR #####
 ####################
 
-class CustomHTMLCal(calendar.HTMLCalendar):
-	cssclasses = [style + " text-nowrap" for style in calendar.HTMLCalendar.cssclasses]
-
 @application.route('/calendar')
 @login_required
 def cal():
@@ -193,23 +190,21 @@ def cal():
 			times.append(str(task.due.year)+'-'+month+'-'+day+'T'+hour+':'+minute+":00")
 	return render_template('calendar.html', titles=titles, ids=ids, times=times)
 
+#########################
+##### NOTIFICATIONS #####
+#########################
 
-''' might get rid of events
-@application.route("/event/new", methods=['GET', 'POST'])
+@application.route('/notifs', methods=['GET'])
 @login_required
-def eventListing():
-	return
-
-@application.route("/event/<int:event_id>/delete", methods=['GET'])
-@login_required
-def delete_event(event_id):
-	post = Event.query.get_or_404(event_id)
-	if post.author != current_user:
-		abort(403)
-	db.session.delete(post)
-	db.session.commit()
-	flash('Event Deleted', 'success')
-	return redirect(url_for('ToDoList'))
-'''
-
+def notif():
+	for task in current_user.posts:
+		if task.due != None and task.complete == False:
+			dif = (task.due - datetime.now()).total_seconds()
+			if -2.5 < dif < 2.5:
+				return task.title + " is due now!"
+			elif 1797.5 < dif < 1802.5:
+				return task.title + " is due in 30 minutes"
+			elif 3597.5 < dif < 3602.5:
+				return task.title + " is due in an hour"
+	return ""
 

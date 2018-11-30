@@ -96,6 +96,31 @@
             document.getElementById("main").style.marginLeft = "0px";
         }
 
+        var xhr;
+        if (window.ActiveXObject){
+        	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        else if (window.XMLHttpRequest){
+        	xhr = new XMLHttpRequest();
+        }
+        function callServer(){
+        	var url = "{{ url_for('notif') }}";
+        	xhr.open("GET", url, true);
+        	xhr.onreadystatechange = notifs;
+        	xhr.send(null);
+        }
+        function notifs(){
+        	if ((xhr.readyState == 4) && (xhr.status == 200)){
+        		var response = xhr.responseText;
+        		if (response != ""){
+        			window.alert(response);
+        		}
+        	}
+        }
+        {% if current_user.is_authenticated %}
+        	setInterval(callServer, 4999);
+        {% endif %}
+
 	</script>
 
 	<br><br><br><br><br><br>
