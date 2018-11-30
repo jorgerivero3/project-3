@@ -3,19 +3,14 @@
 <head>
     <meta charset="UTF-8" />
 	<title>Get Organized</title>
-	<meta name="description" content="Answer questions?" />
-<!---
-	<link rel="shortcut icon" href="{{url_for('static', filename='favicon.png')}}" >
-	<link rel="icon" href="{{url_for('static', filename='favicon.png')}}"> --->
+	<meta name="description" content="Organizer" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+	
 	<script type="text/javascript">
-		function toggling(x){
-    		x.classList.toggle("change");
-		} 
-
 		function openNav(x){
 		    document.getElementById("menu").style.width = "250px";
 		    document.getElementById("main").style.marginLeft = "250px";
@@ -74,6 +69,7 @@
 	<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/now" type="text/css"/>
     <link rel="stylesheet" media="screen" href="{{url_for('static', filename='style.css') }}" type="text/css"/>
 </head>
+
 <body style="width: 100%; overflow: hidden;">
     <div>
 	<div class="dropdown" onclick="openNav(this)">
@@ -106,14 +102,18 @@
 	 	{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
 				{% for catergory, message in messages %}
-					<div class = "alert alert-{{ category }}">
+					<div class = "alert alert-{{ category }}" style="padding-bottom: 2px">
 						<p>{{ message }}</p>
 					</div>
 				{% endfor %}
+				<br><br><br>
+			{% else%}
+				<br><br><br><br><br><br>
 			{% endif %}
 		{% endwith %}
 	</div>
-	<br><br><br><br><br><br>
+	
 	{% block content %}{% endblock %}
+
 </body>
 </html>

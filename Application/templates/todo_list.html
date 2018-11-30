@@ -1,39 +1,56 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!---to do list--->
-<div align="center" id="main" style="position:relative;top:-60px;">
-    <div class="row">
-    <div class="col-sm">
-	    <h2>Tasks</h2>
-    </div>
-    <div class="col-sm" style="padding-top: 15px;">
-	<form method='GET' action ='/task/new'><button href="/task/new" class="addButton" style="float: right; ">+</button></form>
-    </div>
-    </div>
-        <div class="list-group-flush" id="tasks">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!---to do list--->
+<div align="center" id="main">
+    <div class="row">
+	    <div class="col-sm">
+		    <h2>Tasks</h2>
+	    </div>
+    </div>
+
+    <div class="list-group-flush" id="tasks" style="padding-top: 15px">
 		{% for task in tasks.items %}
             <div class="list-group-item list-group-item-primary">
-			{% if task.complete %}
-                <div style="text-decoration: line-through;">
-			{% else %}
-                <div style="text-decoration: none;">
-			{% endif %}
-			<a href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
-			{% if task.due != None %}
-				Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
-			{% else %}
-				Undated<br>
-			{% endif %}
-            </div>
-			<a href="/task/{{ task.id }}/complete">Complete?</a> 
-			<a href="/task/{{ task.id }}/delete">Delete?</a>
+				
+				<a href="/task/{{ task.id }}/delete" style="float: right; font-size: 18px"><i class="fa fa-trash"></i></a>
 
+				{% if task.complete %}
+	                <a href="/task/{{ task.id }}/complete" style="float: left">
+						<div id="checking" onclick="checked(this)">
+							<i class="fa fa-dot-circle-o"></i>
+						</div>
+					</a>
+
+	                <div style="text-decoration: line-through;">
+				{% else %}
+					<a href="/task/{{ task.id }}/complete" style="float: left">
+						<div id="checking" onclick="checked(this)">
+							<i class="fa fa-circle-o"></i>
+						</div>
+					</a>
+
+	                <div style="text-decoration: none;">
+				{% endif %}
+
+				<a href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
+				{% if task.due != None %}
+					Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
+				{% else %}
+					Undated<br>
+				{% endif %}
+	            </div>
             </div>
 
 		{% endfor %}
-         </div><br>
+    </div>
+	
+	<div class="col-sm" style="padding-bottom: 15px;">
+		<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
+    </div>
+
 	<p>
 		Pages:
 			{% if page_num %}
@@ -50,5 +67,6 @@
 	</p>
 
 </div>
+
 
 {% endblock content %}
