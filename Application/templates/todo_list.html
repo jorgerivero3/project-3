@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!---to do list--->
-<div align="center" id="main">
+<div align="center" id="main" style="position: relative; top: -30px">
     <div class="row">
 	    <div class="col-sm">
 		    <h2>Tasks</h2>
@@ -17,6 +17,8 @@
 				
 				<a href="/task/{{ task.id }}/delete" style="float: right; font-size: 18px"><i class="fa fa-trash"></i></a>
 
+				
+
 				{% if task.complete %}
 	                <a href="/task/{{ task.id }}/complete" style="float: left">
 						<div id="checking" onclick="checked(this)">
@@ -24,7 +26,8 @@
 						</div>
 					</a>
 
-	                <div style="text-decoration: line-through;">
+	            	<div>
+	            		<a style="text-decoration: line-through;" href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
 				{% else %}
 					<a href="/task/{{ task.id }}/complete" style="float: left">
 						<div id="checking" onclick="checked(this)">
@@ -32,14 +35,15 @@
 						</div>
 					</a>
 
-	                <div style="text-decoration: none;">
+					<div>
+						<a style="text-decoration: none;" href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
 				{% endif %}
 
-				<a href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
+				
 				{% if task.due != None %}
 					Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
 				{% else %}
-					Undated<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;Undated<br>
 				{% endif %}
 	            </div>
             </div>
@@ -47,7 +51,7 @@
 		{% endfor %}
     </div>
 	
-	<div class="col-sm" style="padding-bottom: 15px;">
+	<div class="col-sm" style="padding-bottom: 15px; position: relative; top: -345px;">
 		<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
     </div>
 
