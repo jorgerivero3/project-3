@@ -114,32 +114,32 @@
         		var response = xhr.responseText;
         		if (response != " "){
         			a = response.split("-");
-        			for (i=0;i<a.length;i+=2){
+        			for (var i=0;i<a.length;i+=2){
         				time = Number(a[i+1]);
         				let ii = i;
-        				setTimeout(function(){alert1();}, time, ii);
         				remind = time - 1800000;
         				if (remind > 0){
-        					setTimeout(function(){alert2();}, remind, ii);
+        					setTimeout(function(){alert2(ii);}, remind);
         				}
+        				setTimeout(function(){alert1(ii);}, time);
         			}
         		}
         	}
-        }
-        {% if current_user.is_authenticated %}
-        	callServer();
-        {% endif %}
-        function alert1(num){
-        	window.alert(a[num]+" is due now.")
-        }
-        function alert2(num){
-        	window.alert(a[num]+" is due in 30 minutes.");
-        }
+		}
+		{% if current_user.is_authenticated %}
+			callServer();
+		{% endif %}
+		function alert1(num){
+			window.alert(a[num]+" is due now.")
+		}
+		function alert2(num){
+			window.alert(a[num]+" is due in 30 minutes.");
+		}
 
 	</script>
 
 	<br><br><br><br><br><br>
-   	{% block content %}{% endblock %}
+	{% block content %}{% endblock %}
 </body>
 
 </html>
