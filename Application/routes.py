@@ -5,8 +5,8 @@ from Application.models import User, Task
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 from datetime import datetime, timedelta
-import sys
 import random
+import sys
 
 
 @application.route('/')
@@ -104,7 +104,6 @@ def reset_token(token):
 		return redirect(url_for('login'))
 	return render_template('reset_token.html', title='Reset Password', form=form)
 
-
 ######################
 ##### TO-DO LIST #####
 ######################
@@ -194,6 +193,7 @@ def cal():
 ##### NOTIFICATIONS #####
 #########################
 
+# takes advantage of ajax
 @application.route('/notifs', methods=['GET'])
 @login_required
 def notif():
