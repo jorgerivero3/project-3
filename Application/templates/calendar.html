@@ -28,7 +28,7 @@
 			events:[
 			{% for title in titles %}
 				{
-					title : '{{ titles[loop.index0] }}',
+					title : '{{ (titles[loop.index0] | tojson)[1:-1] }}',
 					url: '{{ url_for("view", task_id=ids[loop.index0]) }}',
 					start : '{{ times[loop.index0] }}',
 				},

@@ -197,14 +197,13 @@ def cal():
 @application.route('/notifs', methods=['GET'])
 @login_required
 def notif():
+	response = ""
 	for task in current_user.posts:
-		if task.due != None and task.complete == False:
-			dif = (task.due - datetime.now()).total_seconds()
-			if -2.5 < dif < 2.5:
-				return task.title + " is due now!"
-			elif 1797.5 < dif < 1802.5:
-				return task.title + " is due in 30 minutes"
-			elif 3597.5 < dif < 3602.5:
-				return task.title + " is due in an hour"
-	return ""
-
+		if task.due != None:# and task.complete == False:
+			dif = int((task.due - datetime.now()).total_seconds() * 1000)
+			if dif > 0:
+				response += task.title+"-"+str(dif)+"-"
+	if response != "":
+		response = response[:-1]
+		return response
+	return ' '

@@ -112,14 +112,29 @@
         function notifs(){
         	if ((xhr.readyState == 4) && (xhr.status == 200)){
         		var response = xhr.responseText;
-        		if (response != ""){
-        			window.alert(response);
+        		if (response != " "){
+        			a = response.split("-");
+        			for (i=0;i<a.length;i+=2){
+        				time = Number(a[i+1]);
+        				let ii = i;
+        				setTimeout(function(){alert1();}, time, ii);
+        				remind = time - 1800000;
+        				if (remind > 0){
+        					setTimeout(function(){alert2();}, remind, ii);
+        				}
+        			}
         		}
         	}
         }
         {% if current_user.is_authenticated %}
-        	setInterval(callServer, 4999);
+        	callServer();
         {% endif %}
+        function alert1(num){
+        	window.alert(a[num]+" is due now.")
+        }
+        function alert2(num){
+        	window.alert(a[num]+" is due in 30 minutes.");
+        }
 
 	</script>
 
