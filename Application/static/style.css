@@ -119,7 +119,9 @@ body {
     right: 50px;
     height: 60px;
 }
-
+#email #username {
+  width: 300px;
+}
 
 .theForm {
   font-family: 'blanch';
