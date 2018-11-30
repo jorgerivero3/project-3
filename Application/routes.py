@@ -19,8 +19,6 @@ def home():
 def about():
 	return render_template('/about.html', title='About')
 
-
-
 @application.route('/register', methods=['GET', 'POST'])
 def register():
 	if current_user.is_authenticated:
@@ -34,7 +32,6 @@ def register():
 		flash('Account creation succesful!', 'success')
 		return redirect(url_for('login'))
 	return render_template('register.html', title='Register', form=form)
-
 
 @application.route('/login', methods=['GET', 'POST'])
 def login():
@@ -156,6 +153,13 @@ def complete_task(task_id):
 		post.complete = True
 	db.session.commit()
 	return redirect(url_for('ToDoList'))
+
+@application.route("/view/<int:task_id>")
+def view(task_id):
+	post = Task.query.get_or_404(task_id)
+	if post.author != current_user:
+		abort(403)
+	return render_template('post.html', title=post.title, post=post)
 
 ####################
 ##### CALENDAR #####

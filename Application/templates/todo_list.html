@@ -20,7 +20,7 @@
 			{% else %}
                 <div style="text-decoration: none;">
 			{% endif %}
-			{{ task.title }}<br>
+			<a href="{{ url_for('view', task_id=task.id )}}">{{ task.title }}</a><br>
 			{% if task.due != None %}
 				Due: {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
 			{% else %}
