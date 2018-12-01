@@ -45,17 +45,16 @@ class Task(db.Model):
 class DateTimePickerWidget(object):
 	# Date Time picker from Eonasdan GitHub
     data_template=(
-    	'<div class="container">'
-    		'<div class="col-sm-6">'
-        		'<input type="text" class="form-control" id="due" name="due"/>'
-        	'</div>'
-        	'<script type="text/javascript">'
-        		'$(function () {'
-        			'$("#due").datetimepicker();'
-        		'});'
-        	'</script>'
+    	'<div class="form-group col-lg-20" style="text-align:center; width: 400px; margin:10px auto; position:relative;">'
+        	'<input type="text" class="form-control" id="due" name="due" placeholder="Date/Time"/>'
         '</div>'
-        '<br>')
+        '<div class="col-lg-12"></div>'
+        '<script type="text/javascript">'
+        	'$(function () {'
+        		'$("#due").datetimepicker();'
+        	'});'
+        '</script>'
+    )
 
     def __call__(self, field, **kwargs):
         kwargs.setdefault('id', field.id)
