@@ -10,9 +10,15 @@
 		{{ form.hidden_tag() }}
 		<p>
 			<!-- Task Name<br> -->
-			{{ form.title(placeholder="Task Name") }}<br><br><br>
+			<br>
+			<div class="form-group" style="width:400px; margin:10px auto;">
+				{{ form.title(class="form-control", placeholder="Task Name") }}<br>
+			</div>
 			<!-- Brief description<br> -->
-			{{ form.description(placeholder="Brief description") }}<br><br><br>
+			<div class="form-group" style="width:400px; margin:10px auto;">
+				{{ form.description(class="form-control", placeholder="Brief description") }}<br>
+			</div>
+			
 			
 			<p style='text-align: center;'><button type="button" onclick="show();" id='btn'>+ Add Deadline</button><br><br></p>
 			
@@ -20,12 +26,13 @@
 			<p style='text-align: center;'> 
 				<div id="datetimepicker">
 				{{ form.due() }} 
+				<br><br>
 				</div>
-			</p>  <br><br>
+			</p>
 			
-
-
-			{{ form.submit(class="myButton", align="center") }}
+			<div class="form-group">
+				{{ form.submit(class="myButton", align="center") }}
+			</div>
 		
 	</form>
 </div>
