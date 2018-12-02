@@ -1,3 +1,7 @@
+html{
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: 'blanch';
   src: url(./fonts/BLANCH_CAPS.otf);
@@ -27,6 +31,7 @@ h1 {
     width: 500px;
     /* padding-left: 30px;
     padding-right: 30px; */
+    box-shadow: 1px 5px 20px 20px #e6e6e6;
 }
 
 .row{
@@ -114,11 +119,18 @@ body {
     border: none;
     cursor:pointer;
     overflow: hidden;
+<<<<<<< HEAD
+    font-size: 50px;
+    position:absolute;
+    right: 70%;
+    top: 125px;
+=======
     font-size: 60px;
     height: 60px;
 }
 #email #username {
   width: 300px;
+>>>>>>> c5f9bc3dc2597ceb6d1230abf73015b047c72c2a
 }
 
 .theForm {
@@ -188,8 +200,8 @@ input:focus:-ms-input-placeholder { color:transparent; }
   font-size: 20px;
   border: none;
   transition: 0.5s ease;
-  z-index: 1;
-   padding-right: 300%;
+  z-index: 50;
+  padding-right: 300%;
 
 }
 .datetimepicker {
@@ -216,7 +228,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
   background-color: #cfcfc4;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 55;
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s ease-out;
@@ -266,4 +278,8 @@ input:focus:-ms-input-placeholder { color:transparent; }
 }
 .idkwhythisisntworking td, th{
   border: 1px solid black;
+}
+
+#content{
+  position: absolute;
 }
