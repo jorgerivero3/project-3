@@ -20,26 +20,8 @@
     <div class="list-group-flush" id="tasks" style="padding-top: 15px">
 		{% for task in tasks.items %}
             <div class="list-group-item list-group-item-primary">
-<<<<<<< HEAD
-			{% if task.complete %}
-                <div style="text-decoration: line-through;">
-			{% else %}
-                <div style="text-decoration: none;">
-			{% endif %}
-			<strong>{{ task.title }}</strong><br>
-			{% if task.due != None %}
-				<strong>Due:</strong> {{ task.due.month|string+'/'+task.due.day|string+'/'+ task.due.year|string }}<br>
-			{% else %}
-				No Due Date<br>
-			{% endif %}
-
-            </div>
-			<a style="margin-right: 50%;" href="/task/{{ task.id }}/complete"><i class="glyphicon glyphicon-check"></i> Complete</a> 
-			<a href="/task/{{ task.id }}/delete"><i class="glyphicon glyphicon-trash"></i> Delete</a>
-=======
 				
 				<a href="/task/{{ task.id }}/delete" style="float: right; font-size: 18px"><i class="fa fa-trash"></i></a>
->>>>>>> c5f9bc3dc2597ceb6d1230abf73015b047c72c2a
 
 				
 
