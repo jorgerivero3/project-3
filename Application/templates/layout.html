@@ -71,7 +71,7 @@
 </head>
 
 <body style="width: 100%; overflow: hidden;">
-    <div>
+
 	<div class="dropdown" onclick="openNav(this)">
 		<button class="open-btn">
 			<div class="container">
@@ -96,8 +96,6 @@
 				<a href="/register">Register</a>
 			{% endif %}
 		</div>
-	</div>
-    </div>
 	<div id="content" style="margin: 0 50px">
 	 	{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}

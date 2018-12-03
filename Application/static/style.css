@@ -31,14 +31,14 @@ h1 {
     width: 500px;
     /* padding-left: 30px;
     padding-right: 30px; */
-    box-shadow: 1px 5px 20px 20px #e6e6e6;
+
 }
 
 .row{
     padding-left: 45px;
     padding-right: 45px;
     /* background-color: #9C1A1C; */
-    background-clip: content-box;
+    /*background-clip: content-box;*/
 
 }
 
@@ -82,7 +82,6 @@ span {
 body {
   background-color: #f1f1f1;
   background-position: center;
-  height: 600px;
 }
 
 .myButton {
@@ -113,24 +112,18 @@ body {
   background: #002e4d;
   border-radius: 5px;
 }
-.addButton{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
+.addtask{
     cursor:pointer;
-    overflow: hidden;
-<<<<<<< HEAD
-    font-size: 50px;
-    position:absolute;
-    right: 70%;
-    top: 125px;
-=======
-    font-size: 60px;
-    height: 60px;
+    display: inline-block;
+    position:relative;
+    font-size: 40px;
+    height: 50px;
+    float: right;
+    top: -15px;
+    right: 20%;
 }
 #email #username {
   width: 300px;
->>>>>>> c5f9bc3dc2597ceb6d1230abf73015b047c72c2a
 }
 
 .theForm {
@@ -200,8 +193,8 @@ input:focus:-ms-input-placeholder { color:transparent; }
   font-size: 20px;
   border: none;
   transition: 0.5s ease;
-  z-index: 50;
-  padding-right: 300%;
+  z-index: 56;
+  max-width: 100px;
 
 }
 .datetimepicker {
@@ -253,7 +246,7 @@ input:focus:-ms-input-placeholder { color:transparent; }
 .container {
     display: inline-block;
     cursor: pointer;
-    float: right;
+    float: left;
 }
 .bar1, .bar2, .bar3 {
     width: 35px;

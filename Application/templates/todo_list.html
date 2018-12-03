@@ -6,11 +6,7 @@
 
 
 <!---to do list--->
-<div align="center" id="main" style="position: relative; top: -80px">
-	<div style="padding-bottom:15px;position:relative;top:10px;">
-		<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
-	</div>
-
+<div align="center">
     <div class="row">
 	    <div class="col-sm">
 		    <h2>Tasks</h2>
@@ -31,8 +27,6 @@
 							<i class="fa fa-dot-circle-o"></i>
 						</div>
 					</a>
-
-	            	<div>
 	            		<a style="text-decoration: line-through;" href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
 				{% else %}
 					<a href="/task/{{ task.id }}/complete" style="float: left">
@@ -40,8 +34,6 @@
 							<i class="fa fa-circle-o"></i>
 						</div>
 					</a>
-
-					<div>
 						<a style="text-decoration: none;" href="{{ url_for('view', task_id=task.id )}}" target="_blank">{{ task.title }}</a><br>
 				{% endif %}
 
@@ -52,12 +44,13 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;Undated<br>
 				{% endif %}
 	            </div>
-            </div>
 		{% endfor %}
     </div>
+            </div>
 
     <br>
-    Page:
+    <form method='GET' action ='/task/new'><a href="/task/new" class="addtask">+</a></form>
+    <p align="center">Page:
     {% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
     	{% if page_num %}
     		{% if tasks.page == page_num %}
@@ -68,8 +61,9 @@
 		{% else %}
 			...
 		{% endif %}
-	{% endfor %}
+	{% endfor %}</p>
 
+</div>
 </div>
 
 
