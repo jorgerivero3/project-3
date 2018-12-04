@@ -45,8 +45,8 @@ class Task(db.Model):
 class DateTimePickerWidget(object):
 	# Date Time picker from Eonasdan GitHub
     data_template=(
-    	'<div class="form-group col-lg-20" style="text-align:center; width: 400px; margin:10px auto; position:relative;">'
-        	'<input type="text" class="form-control" id="due" name="due" placeholder="Date/Time"/>'
+    	'<div class="form-group col-lg-20" style="text-align:center; width: 250px; height: 0px; margin: 0 auto; position:relative; left: -5px;">'
+        	'<input type="text" class="form-control" id="due" name="due" placeholder="Date/Time" style="text-align:center; margin:0 auto; position:relative; width:265px; left: -4px"></input>'
         '</div>'
         '<div class="col-lg-12"></div>'
         '<script type="text/javascript">'
