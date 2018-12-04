@@ -81,21 +81,22 @@
 			</div> 
 		</button>
     </div>
-		<div id="menu" class="dropdown-content">
-            <a class="close-btn" onclick="closeNav(this)">&times;</a>
-			<a href="/">Home</a>
-			<a href="/about">About</a>
-			<a href="/calendar">Calendar</a>
-			<a href="/todo_list">To Do List</a>
+	<div id="menu" class="dropdown-content">
+        <a class="close-btn" onclick="closeNav(this)">&times;</a>
+		<a href="/">Home</a>
+		<a href="/about">About</a>
+		<a href="/calendar">Calendar</a>
+		<a href="/todo_list">To Do List</a>
 
-			{% if current_user.is_authenticated %}
-				<a href="/account">Account</a>
-				<a href="/logout">Log Out</a>
-			{% else %}
-				<a href="/login">Log In</a>
-				<a href="/register">Register</a>
-			{% endif %}
-		</div>
+		{% if current_user.is_authenticated %}
+			<a href="/account">Account</a>
+			<a href="/logout">Log Out</a>
+		{% else %}
+			<a href="/login">Log In</a>
+			<a href="/register">Register</a>
+		{% endif %}
+	</div>
+	
 	<div id="content" style="margin: 0 50px">
 	 	{% with messages = get_flashed_messages(with_categories=true) %}
 			{% if messages %}
@@ -110,7 +111,7 @@
 			{% endif %}
 		{% endwith %}
 	</div>
-	
+	<br><br><br><br><br><br><br><br>
 	{% block content %}{% endblock %}
 
 </body>

@@ -9,46 +9,46 @@
 
 <!---calendar view--->
 <div id="main">
-<div id="calendar" style="position: relative; background:white; width:85%; margin:0 auto; padding:30px; top:-30px; left:-30px; border-radius: 4px; border: 1px solid rgb(222, 222, 222);"></div>
-<div style="position:relative; top:-715px; left:30px; float: right;">
-	<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
-</div>
+	<div id="calendar" style="position: relative; background:white; width:85%; margin:0 auto; padding:30px; top:-30px; left:-30px; border-radius: 4px; border: 1px solid rgb(222, 222, 222);"></div>
+	<div style="position:relative; float: right; top: -715px; padding: 0 50px">
+		<form method='GET' action ='/task/new'><button href="/task/new" class="addButton">+</button></form>
+	</div>
 
-<script>
-	$(function() {
-		
-		$('#calendar').fullCalendar({
+	<script>
+		$(function() {
 			
-			header: {
-				left: 'prev,next',
-				center: 'title',
-				right: 'month,agendaWeek'
-			},
-			height: 630,
-			editable: false,
-			eventLimit: true,
-			navLinks: false,
-			events:[
-			{% for title in titles %}
-				{
-					title : '{{ (titles[loop.index0] | tojson)[1:-1] }}',
-					url: '{{ url_for("view", task_id=ids[loop.index0]) }}',
-					start : '{{ times[loop.index0] }}',
+			$('#calendar').fullCalendar({
+				
+				header: {
+					left: 'prev,next',
+					center: 'title',
+					right: 'month,agendaWeek'
 				},
-			{% endfor %}
-				{
-          			title  : 'filler',
-          			start  : '1970-01-01T00:00:00',
-        		}
-			],
-			eventClick: function(eventObj){
-				window.open(eventObj.url);
-				return false;
-			}
+				height: 630,
+				editable: false,
+				eventLimit: true,
+				navLinks: false,
+				events:[
+				{% for title in titles %}
+					{
+						title : '{{ (titles[loop.index0] | tojson)[1:-1] }}',
+						url: '{{ url_for("view", task_id=ids[loop.index0]) }}',
+						start : '{{ times[loop.index0] }}',
+					},
+				{% endfor %}
+					{
+	          			title  : 'filler',
+	          			start  : '1970-01-01T00:00:00',
+	        		}
+				],
+				eventClick: function(eventObj){
+					window.open(eventObj.url);
+					return false;
+				}
 
+			});
 		});
-	});
-</script>
+	</script>
 
 </div>
 

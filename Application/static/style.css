@@ -113,15 +113,26 @@ body {
   border-radius: 5px;
 }
 .addtask{
-    cursor:pointer;
-    display: inline-block;
-    position:relative;
-    font-size: 40px;
-    height: 50px;
-    float: right;
-    top: -15px;
-    right: 20%;
+  cursor:pointer;
+  display: inline-block;
+  position:relative;
+  font-size: 40px;
+  height: 50px;
+  float: right;
+  top: -15px;
+  right: 20%;
 }
+
+.addButton{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  font-size: 60px;
+  height: 60px;
+}
+
 #email #username {
   width: 300px;
 }
@@ -129,15 +140,13 @@ body {
 .theForm {
   font-family: 'blanch';
   color: #333333;
+  padding-left: 5px;
 }
 .intro {
   padding: 0 100px 0;
   max-width: 900px;
 }
-.form-control {
-  margin: 0;
-  padding: 0;
-}
+
 #due {
   position: absolute;
   margin: 0 62% 0 ;
@@ -151,22 +160,22 @@ body {
   font-weight: bold;
 }
 input {
-    border: none;
-    border-bottom: 2px solid darkGray;
-    transition: 0.9s ease;
-    width: 260px;
-    background-color: transparent;
-    padding: 20px 0 20px 0;
-    font-family: 'Now';
-    font-weight: bold;
+  border: none;
+  border-bottom: 2px solid darkGray;
+  transition: 0.9s ease;
+  width: 260px;
+  background-color: transparent;
+  padding: 20px 0 20px 0;
+  font-family: 'Now';
+  font-weight: bold;
 }
 input:focus {
   outline: none;
 }
 form {
   font-family: 'Now';
-    font-weight: bold;
-    color: #333333;
+  font-weight: bold;
+  color: #333333;
 }
 textarea {
   border: none;
@@ -204,8 +213,6 @@ input:focus:-ms-input-placeholder { color:transparent; }
 .dropdown {
   position: absolute;
   display: inline-block;
-
-
 }
 .dropdown-content .close-btn{
     position: absolute;
@@ -226,8 +233,6 @@ input:focus:-ms-input-placeholder { color:transparent; }
   padding-top: 60px;
   transition: 0.5s ease-out;
   transition: 0.5s ease-in;
-
-
 }
 .dropdown-content a {
   color: black;
