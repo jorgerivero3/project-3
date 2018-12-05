@@ -69,8 +69,6 @@ def logout():
 
 @application.route("/password_retrieval", methods=['GET', 'POST'])
 def password_retrieval():
-	if current_user.is_authenticated:
-		return redirect(url_for('home'))
 	form = RequestResetForm()
 	if form.validate_on_submit():
 		user = User.query.filter_by(email=form.email.data).first()
@@ -87,8 +85,6 @@ def send_reset_email(user):
 
 @application.route("/reset_token/<token>", methods=['GET', 'POST'])
 def reset_token(token):
-	if current_user.is_authenticated:
-		return redirect(url_for('home'))
 	user = User.verify_reset_token(token)
 	if user is None:
 		flash('The reset token you are using is invalid or expired.')
