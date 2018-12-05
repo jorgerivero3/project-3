@@ -4,14 +4,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!---to do list--->
-<div align="center">
+<div align="center" style="position:relative;top:-40px;">
     <div class="row">
 	    <div class="col-sm">
 		    <h2>Tasks</h2>
 	    </div>
     </div>
 
-    <div class="list-group-flush" id="tasks" style="padding-top: 15px">
+    <div class="list-group-flush" id="tasks" style="padding-top: 10px">
 		{% for task in tasks.items %}
             <div class="list-group-item list-group-item-primary">
 				<a href="/task/{{ task.id }}/delete" style="float: right; font-size: 18px"><i class="fa fa-trash"></i></a>
@@ -41,14 +41,9 @@
 		{% endfor %}
     </div>
 </div>
-
-<div align="center" style="padding-bottom: 15px;">
-    <form method='GET' action ='/task/new'>
-   		<button href="/task/new" class="addButton">+</button>
-   	</form>
-</div>
     
-    <p align="center">Page:
+<br>
+<p align="center" style="position:relative;top:-40px;">Page:
     {% for page_num in tasks.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
     	{% if page_num %}
     		{% if tasks.page == page_num %}
@@ -59,10 +54,13 @@
 		{% else %}
 			...
 		{% endif %}
-	{% endfor %}</p>
+	{% endfor %}
+</p>
 
+<div align="center" style="position:relative;top:-680px;left:220px;padding-bottom:15px;">
+    <form method='GET' action ='/task/new'>
+   		<button href="/task/new" class="addButton">+</button>
+   	</form>
 </div>
-</div>
-
 
 {% endblock content %}
