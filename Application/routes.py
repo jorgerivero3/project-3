@@ -194,7 +194,7 @@ def notif():
 	response = ""
 	for task in current_user.posts:
 		if task.due != None:# and task.complete == False:
-			dif = int((task.due - datetime.now()).total_seconds() * 1000) - 21600000
+			dif = int((task.due - datetime.now()).total_seconds() * 1000) + 21600000
 			if dif > 0:
 				response += task.title+"-"+str(dif)+"-"
 	if response != "":
