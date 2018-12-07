@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
 
 class Task(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	title = db.Column(db.String(20))
+	title = db.Column(db.String(30))
 	description = db.Column(db.String(200))
 	complete = db.Column(db.Boolean, nullable=False, default=False)
 	due = db.Column(db.DateTime, nullable=True)

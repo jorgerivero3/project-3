@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 
 
 class NewItem(FlaskForm):
-	title = StringField("Task name", validators=[DataRequired(), Length(min=2, max=20)])
+	title = StringField("Task name", validators=[DataRequired(), Length(min=2, max=30)])
 	description = TextAreaField("Item description", validators=[DataRequired(), Length(max=750)])
 	due = DateTimeField("Due date", format='%m/%d/%Y %I:%M %p', validators=[Optional()], widget=DateTimePickerWidget())
 	submit = SubmitField('List Task')
